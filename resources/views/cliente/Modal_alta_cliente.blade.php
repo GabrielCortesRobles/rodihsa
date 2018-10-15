@@ -134,12 +134,18 @@
 	 <div class="col-md-6">
       <label>*Correo: </label>
       <input type="text" class="form-control is-valid" placeholder="Ingresa su correo" name='correo_cli' id='correo_cli' required>
-    </div>
+			@if($errors->first('correo'))
+				<i>{{$errors->first('correo')}}</i>
+			@endif
+	  </div>
 	
 	<div class="col-md-6">
       <label>*Telefono: </label>
       <input type="text" class="form-control is-valid" placeholder="Ingresa su numero telefonico" name='telefono_cli' id='telefono_cli' required>
-    </div>
+			@if($errors->first('telefono'))
+				<i>{{$errors->first('telefono')}}</i>
+			@endif
+	  </div>
 	</div>
 	
 	<div class="row">
