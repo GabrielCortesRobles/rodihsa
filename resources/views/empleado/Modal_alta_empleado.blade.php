@@ -1,5 +1,5 @@
-<fieldset class='form' id='fieldset'>
 <!-- Modal alta empleado -->
+<fieldset class='form' id='fieldset'>
 <div class="modal fade" id="alta_empleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document" id='1'>
     <div class="modal-content" id='2'>
@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-	<form class="was-validated" action="{{route('guardamaestro')}}" name='formulario' method='POST' enctype='multipart/form-data'>
+	<form class="was-validated" action="{{route('altaempleado')}}" name='formulario' method='POST' enctype='multipart/form-data'>
 		{{csrf_field()}}
     <div class="col-md-14">
       <label>*Nombre :</label>
@@ -23,24 +23,36 @@
 	<div class="row">
     <div class="col-md-6">
       <label>*Apellido paterno :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Apellido paterno" name='ap_empleado' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Apellido paterno" name='ap_empleado' value="{{old('ap_empleado')}}" required>
+	  @if($errors->first('ap_empleado'))
+			<i>{{$errors->first('ap_empleado')}}</i>
+		@endif
     </div>
 	
 	<div class="col-md-6">
 		<label>*Apellido Materno :</label>
-		<input type="text" class="form-control is-valid" id="" placeholder="Apellido materno" name='am_empleado' required>
+		<input type="text" class="form-control is-valid" id="" placeholder="Apellido materno" name='am_empleado' value="{{old('am_empleado')}}" required>
+		@if($errors->first('am_empleado'))
+			<i>{{$errors->first('am_empleado')}}</i>
+		@endif
     </div>
 	</div>
 	
 	<div class="row">
     <div class="col-md-6">
       <label>*CURP :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="CURP" name='curp_empleado' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="CURP" name='curp_empleado' value="{{old('curp_empleado')}}" required>
+	  @if($errors->first('curp_empleado'))
+			<i>{{$errors->first('curp_empleado')}}</i>
+		@endif
     </div>
 	
 	<div class="col-md-6">
 		<label>*RFC :</label>
-		<input type="text" class="form-control is-valid" id="" placeholder="RFC" name='rfc_empleado' required>
+		<input type="text" class="form-control is-valid" id="" placeholder="RFC" name='rfc_empleado' value="{{old('rfc_empleado')}}" required>
+		@if($errors->first('rfc_empleado'))
+			<i>{{$errors->first('rfc_empleado')}}</i>
+		@endif
     </div>
 	</div>
 	

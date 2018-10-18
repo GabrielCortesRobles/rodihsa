@@ -38,3 +38,6 @@ Route::get('/modulo_venta', 'Controller_administrador@moduloventa')->name('modul
 
 //ruta para el inicio de sesion del perfil administrador
 Route::POST('/session', 'Controller_administrador@session')->name('session');
+
+//ruta para dar de alta a un empleado en el perfil administrador
+Route::POST('/altaempleado', 'Controller_empleado@altaempleado')->name('altaempleado');
