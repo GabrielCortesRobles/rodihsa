@@ -20,6 +20,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap-material-design.css">
+		<link rel="stylesheet" href="css/Inicio.css">
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.2.1.js"></script>
@@ -177,5 +178,14 @@
 			</div>
 		</div>
 	</nav>
+	<div>
+	@include('cliente.Modal_alta_cliente')
+	@include('proveedor.Modal_alta_proveedores')
+	@include('producto.Modal_alta_producto')
+	@include('empleado.Modal_alta_empleado')
+	</div>
+	<div>
+	@yield('contenido')
+	</div>
 </body>
 </html>

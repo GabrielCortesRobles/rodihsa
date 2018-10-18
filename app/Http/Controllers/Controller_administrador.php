@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\municipios;
 
+use App\departamentos;
+
 class Controller_administrador extends Controller
 {
 	//vista del logeo del sitema
@@ -59,7 +61,8 @@ class Controller_administrador extends Controller
 	public function inicio()
 		{	
 			$municipios = municipios::all();
-			return view("header.Inicio")->with("municipios",$municipios);
+			$departamentos = departamentos::all();
+			return view("header.Inicio")->with("municipios",$municipios)->with("departamentos",$departamentos);
 		}
 	
 	//vista principal del sitema

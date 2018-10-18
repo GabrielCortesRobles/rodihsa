@@ -10,11 +10,14 @@
         </button>
       </div>
       <div class="modal-body">
-	<form class="was-validated" name='formulario' method='POST'>
-  
+	<form class="was-validated" action="{{route('guardamaestro')}}" name='formulario' method='POST' enctype='multipart/form-data'>
+		{{csrf_field()}}
     <div class="col-md-14">
       <label>*Nombre :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Ingresa Nombre" name='nom_empleado' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Ingresa Nombre" name='nom_empleado' value="{{old('nom_empleado')}}" required>
+		@if($errors->first('nom_empleado'))
+			<i>{{$errors->first('nom_empleado')}}</i>
+		@endif
     </div>
 	
 	<div class="row">
@@ -102,7 +105,9 @@
   <div class="col-md-6">
 	<label>*Departamento :</label>
     <select class="custom-select" name='id_tipoempleado' required>
-      <option value="">Selecciona un puesto, por favor</option>
+		@foreach($departamentos as $dep)
+				<option value='{{$dep->id_departamento}}'>{{$dep->departamento}}</option>
+		@endforeach
     </select>
   </div>
   
