@@ -1,15 +1,11 @@
-<?php
- 
-  $mysqli = new mysqli('localhost', 'root', '', 'systelecoms');
-
-?>
-<fieldset class='form'>
 <!-- Modal alta cliente -->
+<!-- Esto es una prueba para el funcionamiento de git -->
+<fieldset class='form'>
 <div class="modal fade" id="alta_cliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Alta Cliente</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Registra un Cliente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
