@@ -41,3 +41,6 @@ Route::POST('/session', 'Controller_administrador@session')->name('session');
 
 //ruta para dar de alta a un empleado en el perfil administrador
 Route::POST('/altaempleado', 'Controller_empleado@altaempleado')->name('altaempleado');
+
+//ruta para dar de alta a un proveedor en el perfil administrador
+Route::POST('/altaproveedor', 'Controller_proveedor@altaproveedor')->name('altaproveedor');
