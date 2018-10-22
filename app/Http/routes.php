@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/', 'Controller_administrador@login');
 
 //ruta para la vista principal del perfil administrador
-Route::get('/administrador', 'Controller_administrador@inicio');
+Route::get('/administrador', 'Controller_administrador@inicio')->name('administrador');
 
 //ruta para la busqueda de clientes del perfil administrador
 Route::get('/busqueda_cliente', 'Controller_administrador@busquedacliente')->name('busqueda_cliente');

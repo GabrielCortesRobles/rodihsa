@@ -21,6 +21,7 @@ class Empleados extends Migration
 			$table->string('rfc_empleado',10);
 			$table->string('curp_empleado',18);
 			$table->date('fecha_nacimiento');
+			$table->string('archivo',200);
 			$table->integer('id_municipio')->unsigned();
 			$table->string('localidad',50);
 			$table->integer('cp');

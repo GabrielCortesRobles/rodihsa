@@ -42,7 +42,7 @@
     <div class="col-md-6">
       <label>*CURP :</label>
       <input type="text" class="form-control is-valid" id="" placeholder="CURP" name='curp_empleado' value="{{old('curp_empleado')}}" required>
-	  @if($errors->first('curp_empleado'))
+		@if($errors->first('curp_empleado'))
 			<i>{{$errors->first('curp_empleado')}}</i>
 		@endif
     </div>
@@ -57,38 +57,54 @@
 	</div>
 	
 	<div class="row">	
-	<div class="col-md-6">
-		<label>*Fecha de nacimiento :</label>
-		<input type="date" class="form-control is-valid" id="" name='fecha_nacimiento' required>
-    </div>
+		<div class="col-md-6">
+			<label>*Fecha de nacimiento :</label>
+			<input type="date" class="form-control is-valid" id="" name='fecha_nacimiento' value="{{old('fecha_nacimiento')}}" required>
+		</div>
+		<div class="col-md-6">
+			<label>Imagen de perfil :</label>
+			<input type="file" class="form-control is-valid" name='archivo'>
+		</div>
 	</div>
 	
 	<div class="col-md-14">
       <label>*Calle :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Nombre de la calle" name='calle' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Nombre de la calle" name='calle' value="{{old('calle')}}" required>
+	  @if($errors->first('calle'))
+			<i>{{$errors->first('calle')}}</i>
+		@endif
     </div>
 	
 	<div class="row">
     <div class="col-md-3">
       <label>*N. interno :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Num. interno" name='num_interior' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Num. interno" name='num_interior' value="{{old('num_interior')}}" required>
+	  @if($errors->first('num_interior'))
+			<i>{{$errors->first('num_interior')}}</i>
+		@endif
     </div>
 	
     <div class="col-md-3">
       <label>*N. externo :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Num. externo" name='num_exterior' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Num. externo" name='num_exterior' value="{{old('num_exterior')}}" required>
+	  @if($errors->first('num_exterior'))
+			<i>{{$errors->first('num_exterior')}}</i>
+		@endif
     </div>
 
     <div class="col-md-6">
       <label>*Localidad :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Nombre de la localidad" name='localidad' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Nombre de la localidad" name='localidad' value="{{old('localidad')}}" required>
+	  @if($errors->first('localidad'))
+			<i>{{$errors->first('localidad')}}</i>
+		@endif
 	</div>
     </div>
 	
 	<div class="row">
     <div class="col-md-8">
       <label>*Municipio :</label>
-      <select name='id_municipio' required>
+      <select class="custom-select" name='id_municipio' required>
 		@foreach($municipios as $mun)
 				<option value='{{$mun->id_municipio}}'>{{$mun->municipio}}</option>
 		@endforeach
@@ -97,26 +113,35 @@
 	
     <div class="col-md-4">
       <label>*Codigo postal :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Codigo postal" name='cp' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Codigo postal" name='cp' value="{{old('cp')}}" required>
+		@if($errors->first('cp'))
+			<i>{{$errors->first('cp')}}</i>
+		@endif
     </div>	
 	</div>
 
 	<div class="row">
     <div class="col-md-6">
       <label>*Correo electronico :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Correo electronico" name='correo' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Correo electronico" name='correo' value="{{old('correo')}}" required>
+		@if($errors->first('correo'))
+			<i>{{$errors->first('correo')}}</i>
+		@endif
     </div>	
 	
     <div class="col-md-6">
       <label>*Telefono :</label>
-      <input type="text" class="form-control is-valid" id="" placeholder="Telefono" name='telefono' required>
+      <input type="text" class="form-control is-valid" id="" placeholder="Telefono" name='telefono' value="{{old('telefono')}}" required>
+		@if($errors->first('telefono'))
+			<i>{{$errors->first('telefono')}}</i>
+		@endif
     </div>
   </div>
 
   	<div class="row">
   <div class="col-md-6">
 	<label>*Departamento :</label>
-    <select class="custom-select" name='id_tipoempleado' required>
+    <select class="custom-select" name='id_departamento' required>
 		@foreach($departamentos as $dep)
 				<option value='{{$dep->id_departamento}}'>{{$dep->departamento}}</option>
 		@endforeach
@@ -139,11 +164,11 @@
 	<div class="col-md-3">
 	*Activo :
     <div class="custom-control custom-radio">
-		<input type="radio" class="custom-control-input" id="activo1" name="activo" checked>
+		<input type="radio" class="custom-control-input" id="activo1" value="Si" name="activo" checked>
 		<label class="custom-control-label" for="activo1">SI</label>
 	</div>
 	<div class="custom-control custom-radio mb-3">
-		<input type="radio" class="custom-control-input" id="activo" name="activo">
+		<input type="radio" class="custom-control-input" id="activo" value="No" name="activo">
 		<label class="custom-control-label" for="activo">NO</label>
 		<div class="invalid-feedback">Selecciona una opcion, por favor</div>
 	</div>
@@ -162,32 +187,32 @@
 		<div class='row'>
 			<div class='col-md-6'>
 				<label>Contraseña :</label>
-				<input type='password' class='form-control is-valid' id='' placeholder='Contraseña' name='contrasena' >
+				<input type='password' class='form-control is-valid' id='contrasena' placeholder='Contraseña' name='contrasena' >
 			</div>
 		</div>
 		<label>Seleccione privilegios los para el empleado. (opcional).</label>
 		<div class='form-check'>
-				<input type='checkbox' class='form-check-input' name='privilegio_venta' id='privilegio_venta'>
+				<input type='checkbox' class='form-check-input' value='1' name='privilegio_venta' id='privilegio_venta'>
 				<label class='form-check-label' for='privilegio_venta'>Venta</label>
 		</div>
 			
 		<div class='form-check'>
-				<input type='checkbox' class='form-check-input' name='privilegio_almacen' id='privilegio_almacen'>
+				<input type='checkbox' class='form-check-input' value='1' name='privilegio_almacen' id='privilegio_almacen'>
 				<label class='form-check-label' for='privilegio_almacen'>Almacen</label>
 		</div>
 
 		<div class='form-check'>
-				<input type='checkbox' class='form-check-input' name='privilegio_caja' id='privilegio_caja'>
+				<input type='checkbox' class='form-check-input' value='1' name='privilegio_caja' id='privilegio_caja'>
 				<label class='form-check-label' for='privilegio_caja'>Caja</label>
 		</div>
 	
 	</div>
-	</form>
-      </div>
+	</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <input type="submit" class="btn btn-primary" value='Enviar' id='enviar_empleado'>
       </div>
+	</form>
 	  <div>
 	  <b>Los campos con * son obligatorios.</b>
 	  </div>

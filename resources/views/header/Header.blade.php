@@ -26,6 +26,7 @@
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrapMaterialDesign.js"></script>
+    <script src="js/Empleado.js"></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script> 
 		<title>BA | Administrador</title>
 		<link rel="shortcut icon" href="Images/systelecom.ico">
@@ -33,6 +34,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" style='background-color: #E67E22;'>
 		<a class="navbar-brand" href="#">Systelecom</a>
+		<img src="Images/administrador.png" height="50px" width="50px">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
