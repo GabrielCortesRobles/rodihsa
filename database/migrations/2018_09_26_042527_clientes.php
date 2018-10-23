@@ -31,6 +31,7 @@ class Clientes extends Migration
 			$table->string('telefono',10);
 			$table->string('sexo',10);
 			$table->string('activo',2);
+			$table->string('archivo',200);
 			$table->foreign('id_municipio')->references('id_municipio')->on('municipios');
 			$table->rememberToken();
 			$table->timestamps();
