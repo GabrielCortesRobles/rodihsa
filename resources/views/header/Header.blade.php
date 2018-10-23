@@ -76,7 +76,7 @@
 							<form class="form-inline my-2 my-lg-0" action="{{route('busqueda_cliente')}}">
 									<button class="dropdown-item" type="submit">Lista de Clientes</button>
 							</form>
-							<form class="form-inline my-2 my-lg-0" action="{{route('busqueda_empleado')}}">
+							<form class="form-inline my-2 my-lg-0" action="{{route('reporteempleado')}}">
 									<button class="dropdown-item" type="submit">Lista Empleados</button>
 							</form>
 							<form class="form-inline my-2 my-lg-0" action="{{route('reporteproveedor')}}">

@@ -8,6 +8,10 @@ use App\Http\Requests;
 
 use App\empleados;
 
+use App\municipios;
+
+use App\departamentos;
+
 class Controller_empleado extends Controller
 {
 	public function altaempleado(Request $request)
@@ -81,5 +85,18 @@ class Controller_empleado extends Controller
 		$empleado->save();
 		
 		return redirect ('administrador');
+	}
+	
+	public function reporteempleado()
+	{
+		$municipios = municipios::all();
+		$departamentos = departamentos::all();
+		$empleados = empleados::withTrashed()
+								->orderBy('id_empleado','ASC')
+								->get();
+		return view("empleado.busqueda_empleado")
+					->with("empleados",$empleados)
+					->with("municipios",$municipios)
+					->with("departamentos",$departamentos);
 	}
 }
