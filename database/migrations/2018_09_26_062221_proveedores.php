@@ -29,6 +29,7 @@ class Proveedores extends Migration
 			$table->foreign('id_municipio')->references('id_municipio')->on('municipios');
 			$table->rememberToken();
 			$table->timestamps();
+			$table->timestamp('deleted_at');
 		});
     }
 

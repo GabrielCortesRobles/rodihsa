@@ -79,7 +79,7 @@
 							<form class="form-inline my-2 my-lg-0" action="{{route('busqueda_empleado')}}">
 									<button class="dropdown-item" type="submit">Lista Empleados</button>
 							</form>
-							<form class="form-inline my-2 my-lg-0" action="{{route('busqueda_proveedor')}}">
+							<form class="form-inline my-2 my-lg-0" action="{{route('reporteproveedor')}}">
 									<button class="dropdown-item" type="submit">Lista Proveedor</button>
 							</form>
 						</div>

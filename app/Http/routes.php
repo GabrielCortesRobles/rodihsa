@@ -44,3 +44,6 @@ Route::POST('/altaempleado', 'Controller_empleado@altaempleado')->name('altaempl
 
 //ruta para dar de alta a un proveedor en el perfil administrador
 Route::POST('/altaproveedor', 'Controller_proveedor@altaproveedor')->name('altaproveedor');
+
+//ruta para realizar la consulta de proveedores en el perfil administrador
+Route::get('/reporteproveedor', 'Controller_proveedor@reporteproveedor')->name('reporteproveedor');

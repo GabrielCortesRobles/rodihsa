@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\proveedores;
+use App\municipios;
+use App\departamentos;
 
 class Controller_proveedor extends Controller
 {
+	//funcion para realizar el registro de un proveedor
     public function altaproveedor(Request $request)
 	{
 		$validacion = $this->validate($request,
@@ -39,5 +42,19 @@ class Controller_proveedor extends Controller
 		$proveedor->save();
 		
 		return redirect ('administrador');
+	}
+	
+	//funcio para realizar la consulta de proveedores
+	public function reporteproveedor()
+	{
+		$municipios = municipios::all();
+		$departamentos = departamentos::all();
+		$proveedores = proveedores::withTrashed()
+								->orderBy('id_proveedor','ASC')
+								->get();
+		return view("proveedor.busqueda_proveedor")
+					->with("proveedores",$proveedores)
+					->with("municipios",$municipios)
+					->with("departamentos",$departamentos);
 	}
 }
