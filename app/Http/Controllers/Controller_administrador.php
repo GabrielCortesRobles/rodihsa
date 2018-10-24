@@ -10,6 +10,8 @@ use App\municipios;
 
 use App\departamentos;
 
+use App\proveedores;
+
 class Controller_administrador extends Controller
 {
 	//vista del logeo del sitema
@@ -62,7 +64,13 @@ class Controller_administrador extends Controller
 		{	
 			$municipios = municipios::all();
 			$departamentos = departamentos::all();
-			return view("header.Inicio")->with("municipios",$municipios)->with("departamentos",$departamentos);
+			$proveedores = proveedores::withTrashed()
+								->orderBy('id_proveedor','ASC')
+								->get();
+			return view("header.Inicio")
+			->with("municipios",$municipios)
+			->with("departamentos",$departamentos)
+			->with("proveedores",$proveedores);
 		}
 	
 	//vista principal del sitema

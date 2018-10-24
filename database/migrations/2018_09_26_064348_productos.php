@@ -28,6 +28,7 @@ class Productos extends Migration
 			$table->integer('piezas_mediomayoreo');
 			$table->integer('piezas_mayoreo');
 			$table->string('activo');
+			$table->string('archivo',200);
 			$table->foreign('id_proveedor')->references('id_proveedor')->on('proveedores');
 			$table->rememberToken();
 			$table->timestamps();

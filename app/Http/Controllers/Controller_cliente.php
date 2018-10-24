@@ -15,7 +15,12 @@ class Controller_cliente extends Controller
     {    $clavequesigue = clientes::withTrashed()->orderBy('id_cliente','desc')
 								->take(1)
 								->get();
-     $idcl = $clavequesigue[0]->id_cliente+1;
+     if (count($clavequesigue)==0){
+		 $idcl= 1;
+	 }
+	 else{
+		$idcl = $clavequesigue[0]->id_cliente+1;
+	 }
 		//select * from carreras 
 		//ORM ELOQUENT
 		// select * from carreras where activo = 'si' order by nombre asc
@@ -81,4 +86,13 @@ class Controller_cliente extends Controller
 				return redirect('administrador');
          
     }
+		public function reporteclientes()
+	{
+	$clientes = clientes::withTrashed()
+	                      ->orderBy('id_cliente','ASC')
+						  ->get();
+	return view('cliente.busqueda_cliente')
+	->with('clientes',$clientes)->with("municipios",$municipios);
+	}	
+}
 }

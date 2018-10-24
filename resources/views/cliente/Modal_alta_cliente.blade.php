@@ -159,9 +159,9 @@
 									<label class="custom-control-label" for="sexo_cli">Mujer</label>
 									<div class="invalid-feedback">Seleccione su sexo, por favor</div>
 								</div>
+						
 							</div>
-
-								
+							
 							<div class="col-md-6">
 								*Activo:
 								<div class="custom-control custom-radio">
