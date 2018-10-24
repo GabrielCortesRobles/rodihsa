@@ -50,3 +50,5 @@ Route::get('/reporteproveedor', 'Controller_proveedor@reporteproveedor')->name('
 
 //ruta para realizar la consulta de cliente en el perfil administrador
 Route::POST('/guardacliente', 'Controller_cliente@guardacliente')->name('guardacliente');
+//ruta para realizar la consulta de proveedores en el perfil administrador
+Route::get('/reporteempleado', 'Controller_empleado@reporteempleado')->name('reporteempleado');
