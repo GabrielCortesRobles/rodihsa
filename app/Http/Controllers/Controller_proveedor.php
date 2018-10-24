@@ -24,12 +24,27 @@ class Controller_proveedor extends Controller
 		'localidad'=>'required',
 		'cp'=>['regex:/^[0-9]{5}$/'],
 		'correo'=>'required|email',
-		'telefono'=>['regex:/^[0-9]{10}$/']
+		'telefono'=>['regex:/^[0-9]{10}$/'],
+		'archivo'=>'image|mimes:jpg,jpeg,png,gif'
 		]);
+
+		$file = $request->file('archivo');
+		if($file!="")
+		{
+			$ldate = date('Ymd_His');
+			$img = $file->getClientOriginalName();
+			$img2 = $ldate.$img;
+			\Storage::disk('local')->put($img2, \File::get($file));
+		}
+		else
+		{
+			$img2 = "image-not-found.png";
+		}
 
 		$proveedor = new proveedores;
 		$proveedor->nom_proveedor = $request->nom_proveedor;
 		$proveedor->rfc_proveedor = $request->rfc_proveedor;
+		$proveedor->archivo = $img2;
 		$proveedor->id_municipio = $request->id_municipio;
 		$proveedor->localidad = $request->localidad;
 		$proveedor->cp = $request->cp;

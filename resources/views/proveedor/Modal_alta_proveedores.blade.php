@@ -4,16 +4,16 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Registra un proveedor Proveedor</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Registra un proveedor</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form class="was-validated" action="{{route('altaproveedor')}}" method='POST'>
+				<form class="was-validated" action="{{route('altaproveedor')}}" method='POST' enctype='multipart/form-data'>
 				{{csrf_field()}}
 					<div class="modal-body">
 						<div class="col-md-14">
-							<label ="customControlValidation4">RFC*: </label>
+							<label>RFC*: </label>
 							<input type="text" class="form-control is-valid" id="rfc_proveedor" placeholder="Ingresa su rfc" name='rfc_proveedor' value="{{old('rfc_proveedor')}}" required>
 							@if($errors->first('rfc_proveedor'))
 								<i>{{$errors->first('rfc_proveedor')}}</i>
@@ -27,14 +27,22 @@
 								<i>{{$errors->first('nom_proveedor')}}</i>
 							@endif
 						</div>
-						<div class="col-md-6">
-							<label for="customControlValidation4">*Calle:</label>
-							<input type="text" class="form-control is-valid" id="calle" placeholder="Nombre de la calle" name='calle' value="{{old('calle')}}" required>
-							@if($errors->first('calle'))
-								<i>{{$errors->first('calle')}}</i>
-							@endif
+						<div class='row'>
+							<div class="col-md-6">
+								<label for="customControlValidation4">*Logo:</label>
+								<input type="file" class="form-control is-valid" id="calle" placeholder="Nombre de la calle" name='archivo' value="{{old('archivo')}}" required>
+								@if($errors->first('archivo'))
+									<i>{{$errors->first('archivo')}}</i>
+								@endif
+							</div>
+							<div class="col-md-6">
+								<label for="customControlValidation4">*Calle:</label>
+								<input type="text" class="form-control is-valid" id="calle" placeholder="Nombre de la calle" name='calle' value="{{old('calle')}}" required>
+								@if($errors->first('calle'))
+									<i>{{$errors->first('calle')}}</i>
+								@endif
+							</div>
 						</div>
-						
 						<div class='row'>
 							<div class="col-md-3">
 								<label for="customControlValidation4">*No. interior:</label>

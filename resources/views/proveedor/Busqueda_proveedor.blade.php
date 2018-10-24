@@ -14,13 +14,12 @@
 					<thead>
 						<tr class="table-info">
 						  <th scope="col">ID</th>
-						  <th scope="col">IMAGEN</th>
+						  <th scope="col">LOGO</th>
 						  <th scope="col">RFC</th>
 						  <th scope="col">NOMBRE DE LA EMPESA</th>
 						  <th scope="col">DIRECCIÓN</th>
 						  <th scope="col">CORREO</th>
 						  <th scope="col">TELEFONO</th>
-						  <th scope="col">ACTIVO</th>
 						  <th scope="col">OPCIONES</th>
 						</tr>
 					</thead>
@@ -28,7 +27,7 @@
 						<tr>
 							<td>{{$prov->id_proveedor}}</td>
 							<td>
-								<img src="{{asset('archivos/'.$prov->archivo)}}" heigth=50 width=50>
+								<img src="{{asset('Images/'.$prov->archivo)}}" heigth=50 width=50>
 							</td>
 							<td>{{$prov->rfc_proveedor}}</td><td>{{$prov->nom_proveedor}}</td>
 							<td>{{$prov->calle}} {{$prov->num_interior}} {{$prov->num_exterior}}, {{$prov->localidad}}, {{$prov->id_municipio}}</td>
