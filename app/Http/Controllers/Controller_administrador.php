@@ -11,6 +11,7 @@ use App\municipios;
 use App\departamentos;
 
 use App\proveedores;
+use App\regimenfiscales;
 
 class Controller_administrador extends Controller
 {
@@ -64,13 +65,15 @@ class Controller_administrador extends Controller
 		{	
 			$municipios = municipios::all();
 			$departamentos = departamentos::all();
+			$regimenfiscales = regimenfiscales::all();
 			$proveedores = proveedores::withTrashed()
 								->orderBy('id_proveedor','ASC')
 								->get();
 			return view("header.Inicio")
 			->with("municipios",$municipios)
 			->with("departamentos",$departamentos)
-			->with("proveedores",$proveedores);
+			->with("proveedores",$proveedores)
+			->with("regimenfiscales",$regimenfiscales);
 		}
 	
 	//vista principal del sitema

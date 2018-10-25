@@ -61,3 +61,12 @@ Route::get('/reportecliente', 'Controller_cliente@reportecliente')->name('report
 
 //ruta para realizar la consulta de cliente en el perfil administrador
 Route::get('/reporteproducto', 'Controller_productos@reporteproducto')->name('reporteproducto');
+
+//ruta para realizar la consulta de departamentos en el perfil administrador
+Route::POST('/altadepartamento', 'Controller_departamentos@altadepartamento')->name('altadepartamento');
+
+//ruta para realizar la consulta de cliente en el perfil administrador
+Route::get('/reportedepartamento', 'Controller_departamentos@reportedepartamento')->name('reportedepartamento');
+
+//ruta para realizar la consulta de departamentos en el perfil administrador
+Route::POST('/actualizaempresa', 'Controller_empresa@actualizaempresa')->name('actualizaempresa');

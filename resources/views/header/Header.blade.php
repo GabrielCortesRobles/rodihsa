@@ -54,10 +54,13 @@
 								Empleado
 							</button>
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_proveedor">
-								Proveedores
+								Proveedor
 							</button>
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_cliente">
 								Cliente
+							</button>
+							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_departamento">
+								Departamento
 							</button>
 						</div>
 					</div>
@@ -81,6 +84,9 @@
 							</form>
 							<form class="form-inline my-2 my-lg-0" action="{{route('reporteproveedor')}}">
 									<button class="dropdown-item" type="submit">Lista Proveedor</button>
+							</form>
+							<form class="form-inline my-2 my-lg-0" action="{{route('reportedepartamento')}}">
+									<button class="dropdown-item" type="submit">Lista Departamentos</button>
 							</form>
 						</div>
 					</div>
@@ -152,10 +158,7 @@
 				<div class="dropdown-divider"></div>
 			
 					<div>
-						
-							<form class="form-inline my-2 my-lg-0" action='http://192.168.2.129:8080/systelecoms/index.php/empresa/Controller_empresa/modificar_empresa' method='POST'>
-								<button class="dropdown-item" type="submit">Empresa</button>
-							</form>
+						<button class="dropdown-item" type="submit" data-toggle="modal" data-target="#empresa">Empresa</button>
 					</div>
 				
 				<div>
@@ -181,10 +184,12 @@
 		</div>
 	</nav>
 	<div>
+	@include('empresa.Modal_empresa')
 	@include('cliente.Modal_alta_cliente')
 	@include('proveedor.Modal_alta_proveedores')
 	@include('producto.Modal_alta_producto')
 	@include('empleado.Modal_alta_empleado')
+	@include('departamento.Modal_alta_departamento')
 	</div>
 	<div>
 	@yield('contenido')
