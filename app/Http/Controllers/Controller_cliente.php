@@ -63,7 +63,7 @@ class Controller_cliente extends Controller
 	 }
 	 else
 	 {
-		 $img2 = "administrador.png";
+		 $img2 = "profile-image.jpg";
 	 }
 	 
         $cliente = new clientes;

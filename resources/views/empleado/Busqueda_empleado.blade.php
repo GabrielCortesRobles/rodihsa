@@ -29,7 +29,7 @@
 						<tr>
 							<td>{{$emp->id_empleado}}</td>
 							<td>
-								<img src="{{asset('Images/'.$emp->archivo)}}" heigth=50 width=50>
+							<img src="{{asset('Images/'.$emp->archivo)}}" heigth=50 width=50>
 							</td>
 							<td>{{$emp->nom_empleado}}</td>
 							<td>{{$emp->ap_empleado}}</td>

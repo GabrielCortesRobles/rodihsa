@@ -65,7 +65,7 @@ class Controller_productos extends Controller
 	 }
 	 else
 	 {
-		 $img2 = "ventas.jpg";
+		 $img2 = "image-not-found.png";
 	 }
 	 
         $producto = new productos;

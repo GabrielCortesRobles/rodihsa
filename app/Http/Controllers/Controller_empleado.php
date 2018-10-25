@@ -43,7 +43,7 @@ class Controller_empleado extends Controller
 		}
 		else
 		{
-			$img2 = "administrador.png";
+			$img2 = "profile-image.jpg";
 		}
 		$almacen = $request->privilegio_almacen;
 		if($almacen == null)
