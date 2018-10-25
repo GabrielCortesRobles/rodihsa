@@ -14,13 +14,12 @@
 					<thead>
 						<tr class="table-info">
 						  <th scope="col">ID</th>
-						  <th scope="col">IMAGEN</th>
+						  <th scope="col">LOGO</th>
 						  <th scope="col">RFC</th>
 						  <th scope="col">NOMBRE DE LA EMPESA</th>
 						  <th scope="col">DIRECCIÓN</th>
 						  <th scope="col">CORREO</th>
 						  <th scope="col">TELEFONO</th>
-						  <th scope="col">ACTIVO</th>
 						  <th scope="col">OPCIONES</th>
 						</tr>
 					</thead>
