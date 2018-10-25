@@ -29,14 +29,14 @@
 						<tr>
 							<td>{{$cl->nom_cliente}}</td>
 							<td>
-								<img src="{{asset('Images/'.$cl->Images)" heigth=50 width=50>
+								<img src="{{asset('Images/'.$cl->archivo)}}" heigth=50 width=50>
 							</td>
 							<td>{{$cl->nom_cliente}} {{$cl->ap_cliente}} {{$cl->am_cliente}}</td>
-							<td>{{$cl->calle}} {{$cl->num_interior}} {{$cl->num_exterior}}, {{$cl->localidad}}, {{$cl->id_municipio}}</td>
+							<td>{{$cl->calle}} {{$cl->num_interior}} {{$cl->num_exterior}}, {{$cl->localidad}}</td>
 							<td>{{$cl->correo}}</td>
 							<td>{{$cl->telefono}}</td>
 							<td>
-							@if($emp->deleted_at=="")
+							@if($cl->deleted_at=="")
 							<a href="">Desactivar</a> 
 							/ <a href="">Modificar</a>
 							@else

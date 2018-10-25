@@ -70,10 +70,10 @@
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 							<!-- Boton que direcciona a la vista de la busqueda de productos -->
-							<form class="form-inline my-2 my-lg-0" action="{{route('busqueda_producto')}}">
+							<form class="form-inline my-2 my-lg-0" action="{{route('reporteproducto')}}">
 									<button class="dropdown-item" type="submit">Lista Productos</button>
 							</form>
-							<form class="form-inline my-2 my-lg-0" action="{{route('busqueda_cliente')}}">
+							<form class="form-inline my-2 my-lg-0" action="{{route('reportecliente')}}">
 									<button class="dropdown-item" type="submit">Lista de Clientes</button>
 							</form>
 							<form class="form-inline my-2 my-lg-0" action="{{route('reporteempleado')}}">

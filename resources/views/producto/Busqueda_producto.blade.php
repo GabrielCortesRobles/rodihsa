@@ -3,7 +3,7 @@
 <fieldset class='form'>
 	<br>
 	<div align='center'>
-		<h2>Resultado de busqueda Proveedor</h2>
+		<h2>Resultado de busqueda Producto</h2>
 	</div>
 	<hr>
 	<form class="was-validated" action='' method='POST'>
@@ -15,27 +15,28 @@
 						<tr class="table-info">
 						  <th scope="col">ID</th>
 						  <th scope="col">IMAGEN</th>
-						  <th scope="col">RFC</th>
-						  <th scope="col">NOMBRE DE LA EMPESA</th>
-						  <th scope="col">DIRECCIÓN</th>
-						  <th scope="col">CORREO</th>
-						  <th scope="col">TELEFONO</th>
-						  <th scope="col">ACTIVO</th>
+						  <th scope="col">NOMBRE DEL PRODUCTO</th>
+						  <th scope="col">CÓDIGO INTERNO</th>
+						  <th scope="col">EXISTENCIAS</th>
+						  <th scope="col">PRECIO CU</th>
+						  <th scope="col">PRECIO MENUDEO</th>
+						  <th scope="col">PRECIO MAYOREO</th>
 						  <th scope="col">OPCIONES</th>
 						</tr>
 					</thead>
-					@foreach($proveedores as $prov)
+					@foreach($productos as $prod)
 						<tr>
-							<td>{{$prov->id_proveedor}}</td>
+							<td>{{$prod->id_producto}}</td>
 							<td>
-								<img src="{{asset('Images/'.$prov->archivo)}}" heigth=50 width=50>
+								<img src="{{asset('Images/'.$prod->archivo)}}" heigth=50 width=50>
 							</td>
-							<td>{{$prov->rfc_proveedor}}</td><td>{{$prov->nom_proveedor}}</td>
-							<td>{{$prov->calle}} {{$prov->num_interior}} {{$prov->num_exterior}}, {{$prov->localidad}}, {{$prov->id_municipio}}</td>
-							<td>{{$prov->correo}}</td>
-							<td>{{$prov->telefono}}</td>
+							<td>{{$prod->nom_producto}}</td><td>{{$prod->codigo}}</td>
+							<td>{{$prod->existencia}} </td>
+							<td>{{$prod->precio_cu}}</td>
+							<td>{{$prod->precio_menudeo}}</td>
+							<td>{{$prod->precio_mayoreo}}</td>
 							<td>
-							@if($prov->deleted_at=="")
+							@if($prod->deleted_at=="")
 							<a href="">Desactivar</a> 
 							/ <a href="">Modificar</a>
 							@else

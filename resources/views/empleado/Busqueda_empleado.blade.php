@@ -9,37 +9,31 @@
 	<hr>
 	<br><br>
 	<div align='center'>
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<thead>
 						<tr class="table-info">
 							<th scope="col">ID</th>
+							<th scope="col">FOTO</th>
 							<th scope="col">NOMBRE</th>
 							<th scope="col">A. PATERNO</th>
 							<th scope="col">A. MATERO</th>
 							<th scope="col">DIRECCIÓN</th>
-							<th scope="col">C.P.</th>
 							<th scope="col">CORREO</th>
 							<th scope="col">TELEFONO</th>
-							<th scope="col">DEPARTAMENTO</th>
-							<th scope="col">PRIV. VENTAS</th>
-							<th scope="col">PRIV. CAJA</th>
-							<th scope="col">PRIV. ALMACEN</th>
-							<th scope="col">SEXO</th>
-							<th scope="col">ACTIVO</th>
 							<th scope="col">OPCIONES</th>
 						</tr>
 					</thead>
 					@foreach($empleados as $emp)
 						<tr>
-							<td>{{$emp->id_empeedor}}</td>
+							<td>{{$emp->id_empleado}}</td>
 							<td>
 								<img src="{{asset('Images/'.$emp->archivo)}}" heigth=50 width=50>
 							</td>
-							<td>{{$emp->nom_empeedor}}</td>
-							<td>{{$emp->ap_empeedor}}</td>
-							<td>{{$emp->am_empeedor}}</td>
+							<td>{{$emp->nom_empleado}}</td>
+							<td>{{$emp->ap_empleado}}</td>
+							<td>{{$emp->am_empleado}}</td>
 							<td>{{$emp->calle}} {{$emp->num_interior}} {{$emp->num_exterior}}, {{$emp->localidad}}, {{$emp->id_municipio}}</td>
 							<td>{{$emp->correo}}</td>
 							<td>{{$emp->telefono}}</td>

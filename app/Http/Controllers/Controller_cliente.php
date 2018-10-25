@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\clientes;
 use App\municipios;
+use App\departamentos;
+use App\proveedores;
 
 class Controller_cliente extends Controller
 {
@@ -61,7 +63,7 @@ class Controller_cliente extends Controller
 	 }
 	 else
 	 {
-		 $img2 = "sinfoto.png";
+		 $img2 = "administrador.png";
 	 }
 	 
         $cliente = new clientes;
@@ -86,13 +88,21 @@ class Controller_cliente extends Controller
 				return redirect('administrador');
          
     }
-		public function reporteclientes()
+	public function reportecliente()
 	{
-	$clientes = clientes::withTrashed()
-	                      ->orderBy('id_cliente','ASC')
-						  ->get();
-	return view('cliente.busqueda_cliente')
-	->with('clientes',$clientes)->with("municipios",$municipios);
-	}	
+		$municipios = municipios::all();
+		$departamentos = departamentos::all();
+		$proveedores = proveedores::withTrashed()
+		->orderBy('nom_proveedor','asc')
+							  ->get();
+		$clientes = clientes::withTrashed()
+								->orderBy('id_cliente','ASC')
+								->get();
+		return view("cliente.busqueda_cliente")
+					->with("municipios",$municipios)
+					->with("departamentos",$departamentos)
+					->with("proveedores",$proveedores)
+					->with("clientes",$clientes);
+	}
 }
-}
+

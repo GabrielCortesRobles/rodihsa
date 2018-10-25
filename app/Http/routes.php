@@ -56,5 +56,8 @@ Route::get('/reporteempleado', 'Controller_empleado@reporteempleado')->name('rep
 //ruta para realizar la consulta de producto en el perfil administrador
 Route::POST('/guardaproducto', 'Controller_productos@guardaproducto')->name('guardaproducto');
 
-//ruta para realizar la consulta de proveedores en el perfil administrador
+//ruta para realizar la consulta de cliente en el perfil administrador
 Route::get('/reportecliente', 'Controller_cliente@reportecliente')->name('reportecliente');
+
+//ruta para realizar la consulta de cliente en el perfil administrador
+Route::get('/reporteproducto', 'Controller_productos@reporteproducto')->name('reporteproducto');

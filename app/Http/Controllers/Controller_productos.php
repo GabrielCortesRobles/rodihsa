@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\municipios;
+use App\clientes;
 use App\productos;
+use App\departamentos;
 
 use App\proveedores;
 
@@ -62,7 +65,7 @@ class Controller_productos extends Controller
 	 }
 	 else
 	 {
-		 $img2 = "sinfoto.png";
+		 $img2 = "ventas.jpg";
 	 }
 	 
         $producto = new productos;
@@ -86,4 +89,25 @@ class Controller_productos extends Controller
 				return redirect('administrador');
          
     }
+	public function reporteproducto()
+	{
+		$municipios = municipios::all();
+		$departamentos = departamentos::all();
+		$proveedores = proveedores::withTrashed()
+		->orderBy('nom_proveedor','asc')
+							  ->get();
+		$clientes = clientes::withTrashed()
+								->orderBy('id_cliente','ASC')
+								->get();
+		$productos = productos::withTrashed()
+								->orderBy('id_producto','ASC')
+								->get();
+		return view("producto.busqueda_producto")
+					->with("municipios",$municipios)
+					->with("departamentos",$departamentos)
+					->with("proveedores",$proveedores)
+					->with("clientes",$clientes)
+					->with("productos",$productos);
+	}
+	
 }
