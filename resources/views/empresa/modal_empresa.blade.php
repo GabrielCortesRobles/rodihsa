@@ -14,7 +14,7 @@
 					<div class="modal-body">
 						<div class="col-md-14">
 							<label>RFC*: </label>
-							<input type="text" class="form-control is-valid" id="rfc_empresa" placeholder="Ingresa su rfc" name='rfc_empresa' value="{{old('rfc_empresa')}}" required>
+							<input type="text" class="form-control is-valid" id="rfc_empresa" placeholder="Ingresa su rfc" name='rfc_empresa' value="{{$empresas[0]->rfc_empresa}}" required>
 							@if($errors->first('rfc_empresa'))
 								<i>{{$errors->first('rfc_empresa')}}</i>
 							@endif
@@ -23,14 +23,14 @@
 						<div class='row'>
 							<div class="col-md-6">
 								<label>*Nombre del empresa: </label>
-								<input type="text" class="form-control is-valid" id="nom_empresa" placeholder="Ingresa nombre de la empresa" name='nom_empresa' value="{{old('nom_empresa')}}" required>
+								<input type="text" class="form-control is-valid" id="nom_empresa" placeholder="Ingresa nombre de la empresa" name='nom_empresa' value="{{$empresas[0]->nom_empresa}}" required>
 								@if($errors->first('nom_empresa'))
 									<i>{{$errors->first('nom_empresa')}}</i>
 								@endif
 							</div>
 							<div class="col-md-6">
 								<label>*Razón social: </label>
-								<input type="text" class="form-control is-valid" id="razonsocial" placeholder="Ingresa nombre de la empresa" name='razon_social' value="{{old('razon_social')}}" required>
+								<input type="text" class="form-control is-valid" id="razonsocial" placeholder="Ingresa nombre de la empresa" name='razon_social' value="{{$empresas[0]->razon_social}}" required>
 								@if($errors->first('razon_social'))
 									<i>{{$errors->first('razon_social')}}</i>
 								@endif
@@ -40,6 +40,7 @@
 						<div class="col-md-8">
 							<label>*Regimen fiscal :</label>
 							<select class="custom-select" name='id_regimenfiscal' required>
+								<option value='{{$id_regimenfiscal}}'>{{$regimen}}</option>
 								@foreach($regimenfiscales as $reg)
 										<option value='{{$reg->id_regimenfiscal}}'>{{$reg->descripcion}}</option>
 								@endforeach
@@ -49,14 +50,14 @@
 						<div class='row'>
 							<div class="col-md-6">
 								<label for="customControlValidation4">*Logo:</label>
-								<input type="file" class="form-control is-valid" id="calle" placeholder="Nombre de la calle" name='archivo' value="{{old('archivo')}}" required>
+								<input type="file" class="form-control is-valid" id="calle" name='archivo' required>
 								@if($errors->first('archivo'))
 									<i>{{$errors->first('archivo')}}</i>
 								@endif
 							</div>
 							<div class="col-md-6">
 								<label for="customControlValidation4">*Calle:</label>
-								<input type="text" class="form-control is-valid" id="calle" placeholder="Nombre de la calle" name='calle' value="{{old('calle')}}" required>
+								<input type="text" class="form-control is-valid" id="calle" placeholder="Nombre de la calle" name='calle' value="{{$empresas[0]->calle}}" required>
 								@if($errors->first('calle'))
 									<i>{{$errors->first('calle')}}</i>
 								@endif
@@ -65,21 +66,21 @@
 						<div class='row'>
 							<div class="col-md-3">
 								<label for="customControlValidation4">*No. interior:</label>
-								<input type="text" class="form-control is-valid" id="num_interior" placeholder="Num. interno" name='num_interior' value="{{old('num_interior')}}" required>
+								<input type="text" class="form-control is-valid" id="num_interior" placeholder="Num. interno" name='num_interior' value="{{$empresas[0]->num_interior}}" required>
 								@if($errors->first('num_interior'))
 									<i>{{$errors->first('num_interior')}}</i>
 								@endif
 							</div>
 							<div class="col-md-3">
 								<label for="customControlValidation4">*No.exterior:</label>
-								<input type="text" class="form-control is-valid" id="num_exterior" placeholder="Num. externo" name='num_exterior' value="{{old('num_exterior')}}" required>
+								<input type="text" class="form-control is-valid" id="num_exterior" placeholder="Num. externo" name='num_exterior' value="{{$empresas[0]->num_exterior}}" required>
 								@if($errors->first('num_exterior'))
 									<i>{{$errors->first('num_exterior')}}</i>
 								@endif
 							</div>
 							<div class="col-md-6">
 								<label for="customControlValidation4">*Localidad:</label>
-								<input type="text" class="form-control is-valid" id="localidad" placeholder="Nombre de la localidad" name='localidad' value="{{old('localidad')}}" required>
+								<input type="text" class="form-control is-valid" id="localidad" placeholder="Nombre de la localidad" name='localidad' value="{{$empresas[0]->localidad}}" required>
 								@if($errors->first('localidad'))
 									<i>{{$errors->first('localidad')}}</i>
 								@endif
@@ -89,6 +90,7 @@
 							<div class="col-md-8">
 								<label>*Municipio :</label>
 								<select class="custom-select" name='id_municipio' required>
+									<option value='{{$id_municipio}}'>{{$munactual}}</option>
 									@foreach($municipios as $mun)
 											<option value='{{$mun->id_municipio}}'>{{$mun->municipio}}</option>
 									@endforeach
@@ -97,7 +99,7 @@
 							
 							<div class="col-md-4">
 								<label>*Codigo postal :</label>
-								<input type="text" class="form-control is-valid" id="" placeholder="Codigo postal" name='cp' value="{{old('cp')}}" required>
+								<input type="text" class="form-control is-valid" id="" placeholder="Codigo postal" name='cp' value="{{$empresas[0]->cp}}" required>
 									@if($errors->first('cp'))
 										<i>{{$errors->first('cp')}}</i>
 									@endif
@@ -107,7 +109,7 @@
 						<div class='row'>
 							<div class="col-md-6">
 								<label for="customControlValidation4">*Correo:</label>
-								<input type="text" class="form-control is-valid" id="correo" placeholder="Ingresa el e-mail" name='correo' value="{{old('correo')}}" required>
+								<input type="text" class="form-control is-valid" id="correo" placeholder="Ingresa el e-mail" name='correo' value="{{$empresas[0]->correo}}" required>
 								@if($errors->first('correo'))
 									<i>{{$errors->first('correo')}}</i>
 								@endif
@@ -115,7 +117,7 @@
 							
 							<div class="col-md-6">
 								<label for="customControlValidation4">*Telefono:</label>
-								<input type="text" class="form-control is-valid" id="telefono" placeholder="Ingresa el num. telefonico" name='telefono' value="{{old('telefono')}}" required>
+								<input type="text" class="form-control is-valid" id="telefono" placeholder="Ingresa el num. telefonico" name='telefono' value="{{$empresas[0]->telefono}}" required>
 								@if($errors->first('telefono'))
 									<i>{{$errors->first('telefono')}}</i>
 								@endif

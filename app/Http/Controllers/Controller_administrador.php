@@ -9,7 +9,7 @@ use App\Http\Requests;
 use App\municipios;
 
 use App\departamentos;
-
+use App\empresas;
 use App\proveedores;
 use App\regimenfiscales;
 
@@ -63,8 +63,13 @@ class Controller_administrador extends Controller
 	//vista principal del sitema
 	public function inicio()
 		{	
-			$municipios = municipios::all();
 			$departamentos = departamentos::all();
+			$empresas = empresas::where('id_empresa','=',1)->get();
+			$id_municipio = $empresas[0]->id_municipio;
+			$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
+			$municipios = municipios::all();
+			$id_regimenfiscal = $empresas[0]->id_regimenfiscal;
+			$regimen = regimenfiscales::where('id_regimenfiscal', '!=', $id_regimenfiscal)->get();
 			$regimenfiscales = regimenfiscales::all();
 			$proveedores = proveedores::withTrashed()
 								->orderBy('id_proveedor','ASC')
@@ -73,7 +78,12 @@ class Controller_administrador extends Controller
 			->with("municipios",$municipios)
 			->with("departamentos",$departamentos)
 			->with("proveedores",$proveedores)
-			->with("regimenfiscales",$regimenfiscales);
+			->with("regimenfiscales",$regimenfiscales)
+			->with("regimen",$regimen[0]->descripcion)
+			->with("id_regimenfiscal",$id_regimenfiscal)
+			->with("id_municipio",$id_municipio)
+			->with("munactual",$munactual[0]->municipio)
+			->with("empresas",$empresas);
 		}
 	
 	//vista principal del sitema
