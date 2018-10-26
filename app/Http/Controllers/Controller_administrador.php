@@ -12,6 +12,14 @@ use App\departamentos;
 
 use App\proveedores;
 
+use App\productos;
+
+use App\clientes;
+
+use App\empleados;
+
+use App\entradas;
+
 class Controller_administrador extends Controller
 {
 	//vista del logeo del sitema
@@ -59,18 +67,38 @@ class Controller_administrador extends Controller
 		return view("ventas.Modulo_venta");
 	}
 	
+	public function modulofactura()
+	{
+		return view("factura.Modulo_factura");
+	}
+	
 	//vista principal del sitema
 	public function inicio()
 		{	
 			$municipios = municipios::all();
 			$departamentos = departamentos::all();
 			$proveedores = proveedores::withTrashed()
-								->orderBy('id_proveedor','ASC')
-								->get();
+									->orderBy('nom_proveedor','asc')
+														  ->get();
+			$clientes = clientes::withTrashed()
+									->orderBy('id_cliente','ASC')
+									->get();
+			$productos = productos::withTrashed()
+									->orderBy('id_producto','ASC')
+									->get();
+			$entradas = entradas::withTrashed()
+									->orderBy('id_entrada','ASC')
+									->get();
+			$empleados = empleados::withTrashed()
+									->orderBy('id_empleado','ASC')
+									->get();	
 			return view("header.Inicio")
 			->with("municipios",$municipios)
 			->with("departamentos",$departamentos)
-			->with("proveedores",$proveedores);
+			->with("clientes",$clientes)
+			->with("proveedores",$proveedores)
+			->with("productos",$productos)
+			->with("empleados",$empleados);
 		}
 	
 	//vista principal del sitema

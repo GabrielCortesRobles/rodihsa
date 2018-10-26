@@ -36,6 +36,8 @@ Route::get('/busqueda_proveedor', 'Controller_administrador@busquedaproveedor')-
 //ruta para el modulo de venta del perfil administrador
 Route::get('/modulo_venta', 'Controller_administrador@moduloventa')->name('modulo_venta');
 
+Route::POST('/modulo_factura', 'Controller_administrador@modulofactura')->name('modulo_factura');
+
 //ruta para el inicio de sesion del perfil administrador
 Route::POST('/session', 'Controller_administrador@session')->name('session');
 
@@ -61,3 +63,9 @@ Route::get('/reportecliente', 'Controller_cliente@reportecliente')->name('report
 
 //ruta para realizar la consulta de cliente en el perfil administrador
 Route::get('/reporteproducto', 'Controller_productos@reporteproducto')->name('reporteproducto');
+
+//ruta para realizar la alta de entrada en el perfil administrador
+Route::POST('/altaentrada', 'Controller_entrada@altaentrada')->name('altaentrada');
+
+//ruta para realizar la alta de entrada en el perfil administrador
+Route::get('/reporteentrada', 'Controller_entrada@reporteentrada')->name('reporteentrada');

@@ -1,30 +1,7 @@
-<!DOCTYPE html>
-<html>
-   <head>
-       <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
-	   <script type = "text/javascript" src = "http://192.168.2.129:8080/systelecoms/assets/js/jquery-3.3.1.js"> </script>
-    <style>
-	<!-----------Estilo de formulario pre-factura------------>
-		.form
-	
-	{
-		background-color: #e9ecefba;
-		width: 50%;
-		border-radius: 7px;
-		margin:  auto;
-		margin-bottom: 10px;
-	}
-	#factura
-	{
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	</style>
-   </head>
-   <body>
-   <!----------------Formulario Módulo de pre-facturación---------------------->
-	  <form class="was-validated" action='http://192.168.2.129:8080/systelecoms/index.php/Controller_factura_sistema/insertar_factura' method='POST'>
+@extends('header.Header')
+@section('contenido')
+	  <form class="was-validated" action='' method='POST'>
+	  {{csrf_field()}}
 			<fieldset class='form'>
 				  <h1 id="p1" align="center">Módulo de Facturación</h1>
 					<div class="card bg-light mb-3" style="max-width: 40rem;" id='factura'>
@@ -32,22 +9,31 @@
 						<div class="card-body">
 								<div class='col-md-8'>
 									<label for="validationDefault02">RFC*:</label>
-									<input type="text" class='form-control' name="rfc_empresa" id="rfc_empresa" value='<?php echo $result[0]->rfc_empresa?>' readonly />
+									<input type="text" class='form-control' name="rfc_empresa" id="rfc_empresa" value="{{$empresas->rfc_empresa}}" readonly />
 								</div>
 								<div class='col-14'>
 									<label for="validationDefault01">Nombre o razón social:</label>
 									<input type="text" class='form-control' name="nom_razonsocial" id="nom_razonsocial" value='<?php echo $result[0]->razon_social?>'/>
 								</div>
+								
 							<div class="form-group row">
-								<div class='col-8'>
-									<label for="validationDefault02">Régimen Fiscal*:</label>
-									<input type="text" class='form-control' name="regimen_fiscal" id="regimen_fiscal"  />
+								<div class="col-md-8">
+									<label>*Régimen Fiscal* :</label>
+									<select class="custom-select" name='id_regimenfiscal' required>
+										@foreach($regimenfiscales as $rf)
+												<option value='{{$rf->id_regimenfiscal}}'>{{$rf->descripcion}}</option>
+										@endforeach
+									</select>
 								</div>
 								
-								<div class='col-4'>
-									<label for="validationDefault02">Tipo de Factura*:</label>
-									<input type="text" class='form-control' name="tipo_factura" id="tipo_factura" />
-								</div>
+								<div class="col-md-8">
+								<label>*Tipo de Factura* :</label>
+								<select class="custom-select" name='id_tipofactura' required>
+									@foreach($tipofacturas as $tf)
+											<option value='{{$tf->id_tipofactura}}'>{{$tf->clave}} {{$tf->descripcion}}</option>
+									@endforeach
+								</select>
+							</div>
 							</div>
 
 						</div>
@@ -66,6 +52,8 @@
 									<label for="validationDefault02">Uso de la Factura*:</label>
 									<input type="text" class='form-control' name="uso_factura" id="uso_factura"/>
 								</div>
+								
+								
 							</div>
 						</div>
 					</div>
@@ -203,5 +191,4 @@
 				<br><br>
 			</fieldset>
 		</form>
-   </body>
-</html>
+@stop

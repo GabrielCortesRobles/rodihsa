@@ -59,6 +59,9 @@
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_cliente">
 								Cliente
 							</button>
+							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_entrada">
+								Entrada
+							</button>
 						</div>
 					</div>
 				</li>
@@ -71,19 +74,23 @@
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 							<!-- Boton que direcciona a la vista de la busqueda de productos -->
 							<form class="form-inline my-2 my-lg-0" action="{{route('reporteproducto')}}">
-									<button class="dropdown-item" type="submit">Lista Productos</button>
+									<button class="dropdown-item" type="submit">Lista de Productos</button>
 							</form>
 							<form class="form-inline my-2 my-lg-0" action="{{route('reportecliente')}}">
 									<button class="dropdown-item" type="submit">Lista de Clientes</button>
 							</form>
 							<form class="form-inline my-2 my-lg-0" action="{{route('reporteempleado')}}">
-									<button class="dropdown-item" type="submit">Lista Empleados</button>
+									<button class="dropdown-item" type="submit">Lista de Empleados</button>
 							</form>
 							<form class="form-inline my-2 my-lg-0" action="{{route('reporteproveedor')}}">
-									<button class="dropdown-item" type="submit">Lista Proveedor</button>
+									<button class="dropdown-item" type="submit">Lista de Proveedor</button>
+							</form>
+							<form class="form-inline my-2 my-lg-0" action="{{route('reporteentrada')}}">
+									<button class="dropdown-item" type="submit">Lista de Almacen</button>
 							</form>
 						</div>
-					</div>
+						</div>
+					
 				</li>
 				<li class="nav-item">
 					<!-- Boton que direcciona al modulo de ventas -->
@@ -93,8 +100,8 @@
 				</li>
 				
 				<li class="nav-item">
-					<!-- Boton que direcciona al modulo de ventas -->
-					<form class="form-inline my-2 my-lg-0" action='http://192.168.2.129:8080/systelecoms/index.php/factura/Controller_factura_sistema/factura' method='POST'>
+					
+					<form class="form-inline my-2 my-lg-0" action="{{route('modulo_factura')}}" method='POST'>
 							<button class="btn btn-darck" type="submit">Módulo Factura</button>
 					</form>
 				</li>
@@ -185,6 +192,7 @@
 	@include('proveedor.Modal_alta_proveedores')
 	@include('producto.Modal_alta_producto')
 	@include('empleado.Modal_alta_empleado')
+	@include('entrada.Modal_alta_entrada')
 	</div>
 	<div>
 	@yield('contenido')
