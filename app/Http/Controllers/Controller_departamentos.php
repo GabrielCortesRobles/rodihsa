@@ -6,27 +6,50 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\municipios;
-use App\clientes;
+use App\departamentos;
+use App\empresas;
 use App\proveedores;
+use App\regimenfiscales;
 use App\productos;
+use App\clientes;
 use App\empleados;
 use App\entradas;
-use App\regimenfiscales;
-use App\empresas;
-use App\departamentos;
 
-class Controller_entrada extends Controller
+class Controller_departamentos extends Controller
 {
-    public function altaentrada(Request $request)
-    {
-        $ent = new entradas;
-		$ent->id_proveedor = $request->id_proveedor;
-		$ent->id_empleado = $request->id_empleado;
-		$ent->total = $request->total;		
-		$ent->save();
-				return redirect('administrador');
+    //funcion para realizar el registro de un departamentos
+    public function altadepartamento(Request $request)
+	{
+		$validacion = $this->validate($request,
+		['departamento'=>['regex:/^[A-Z][A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/'],
+		'activo'=>'required',
+		'archivo'=>'image|mimes:jpg,jpeg,png,gif'
+		]);
+
+		$file = $request->file('archivo');
+		if($file!="")
+		{
+			$ldate = date('Ymd_His');
+			$img = $file->getClientOriginalName();
+			$img2 = $ldate.$img;
+			\Storage::disk('local')->put($img2, \File::get($file));
+		}
+		else
+		{
+			$img2 = "image-not-found.png";
+		}
+
+		$departamentos = new departamentos;
+		$departamentos->departamento = $request->departamento;
+		$departamentos->archivo = $img2;
+		$departamentos->activo = $request->activo;
+		$departamentos->save();
+		
+		return redirect ('administrador');
     }
-	public function reporteentrada()
+    
+    //funcio para realizar la consulta de departamentos
+	public function reportedepartamento()
 	{
 		$departamentos = departamentos::all();
 			$empresas = empresas::where('id_empresa','=',1)->get();
@@ -51,9 +74,8 @@ class Controller_entrada extends Controller
 			$empleados = empleados::withTrashed()
 									->orderBy('id_empleado','ASC')
 									->get();	
-			return view("entrada.busqueda_entrada")
+			return view("departamento.Busqueda_departamento")
 			->with("municipios",$municipios)
-			->with("entradas",$entradas)
 			->with("departamentos",$departamentos)
 			->with("clientes",$clientes)
 			->with("proveedores",$proveedores)
@@ -67,5 +89,4 @@ class Controller_entrada extends Controller
 			->with("munactual",$munactual[0]->municipio)
 			->with("empresas",$empresas);
 	}
-	
 }

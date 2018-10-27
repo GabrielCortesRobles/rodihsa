@@ -9,11 +9,11 @@
 						<div class="card-body">
 								<div class='col-md-8'>
 									<label for="validationDefault02">RFC*:</label>
-									<input type="text" class='form-control' name="rfc_empresa" id="rfc_empresa" value="{{$empresas->rfc_empresa}}" readonly />
+									<input type="text" class='form-control' name="rfc_empresa" id="rfc_empresa" value="{{$empresas[0]->rfc_empresa}}" readonly />
 								</div>
 								<div class='col-14'>
 									<label for="validationDefault01">Nombre o razón social:</label>
-									<input type="text" class='form-control' name="nom_razonsocial" id="nom_razonsocial" value='<?php echo $result[0]->razon_social?>'/>
+									<input type="text" class='form-control' name="nom_razonsocial" id="nom_razonsocial" value='{{$empresas[0]->razon_social}}'/>
 								</div>
 								
 							<div class="form-group row">
