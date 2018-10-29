@@ -80,7 +80,7 @@ Route::get('/reportedepartamento', 'Controller_departamentos@reportedepartamento
 Route::POST('/actualizaempresa', 'Controller_empresa@actualizaempresa')->name('actualizaempresa');
 
 //ruta para la vista de la modificacion empleado en el perfil administrador
-Route::get('/mempleado/{$id_empleado}', 'Controller_empleado@mempleado')->name('mempleado');
+Route::get('/mempleado/{id_empleado}', 'Controller_empleado@mempleado')->name('mempleado');
 
 //ruta para realizar actualizar los datos de empleado en el perfil administrador
 Route::POST('/actualizaempleado', 'Controller_empleado@actualizaempleado')->name('actualizaempleado');

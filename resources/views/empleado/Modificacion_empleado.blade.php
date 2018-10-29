@@ -1,4 +1,4 @@
-@extends('header.Header')
+@extends('header.header') 
 @section('contenido')
 <fieldset>
 	<!-----------------Formulario modificación empleado----------------->

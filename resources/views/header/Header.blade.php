@@ -1,17 +1,3 @@
-<?php
-	/*//condicion para recuperar la sesion
-	if ($_SESSION['id_empleado'] == null)
-	{
-		session_start();
-	}
-	else
-	{
-		// transaformacion de la sesión en variables para facilitar su llamado
-		$id_empleado = $_SESSION['id_empleado'];
-		$nom_empleado = $_SESSION['nom_empleado'];
-		$correo = $_SESSION['correo'];
-	}*/
-?>
 <html lang="es">
 	<head>
 		<!-- Required meta tags -->
@@ -19,22 +5,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="css/bootstrap-material-design.css">
-		<link rel="stylesheet" href="css/Inicio.css">
+		<link rel="stylesheet" href="{{asset('css/bootstrap-material-design.css')}}">
+		<link rel="stylesheet" href="{{asset('css/Inicio.css')}}">
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.2.1.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrapMaterialDesign.js"></script>
-    <script src="js/Empleado.js"></script>
+    <script src="{{asset('js/jquery-3.2.1.js')}}"></script>
+    <script src="{{asset('js/popper.js')}}"></script>
+    <script src="{{asset('js/bootstrapMaterialDesign.js')}}"></script>
+    <script src="{{asset('js/Empleado.js')}}"></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script> 
 		<title>BA | Administrador</title>
-		<link rel="shortcut icon" href="Images/systelecom.ico">
+		<link rel="shortcut icon" href="{{asset('Images/systelecom.ico')}}">
 	</head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" style='background-color: #E67E22;'>
 		<a class="navbar-brand" href="#">Systelecom</a>
-		<img src="Images/administrador.png" height="50px" width="50px">
+		<img src="{{asset('Images/administrador.png')}}" height="50px" width="50px">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
