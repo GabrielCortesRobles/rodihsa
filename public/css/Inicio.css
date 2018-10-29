@@ -10,3 +10,14 @@
 {
 	opacity: 0.5;
 }
+
+.formulario	
+{
+	background-color: #e9ecefba;
+	padding: 30px;
+	height: 100%;
+	width: 450px;
+	margin-left: 40%;
+	margin-top: 50px;
+	border-radius: 7px;
+}

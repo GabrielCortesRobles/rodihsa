@@ -40,7 +40,7 @@
 							<td>
 							@if($emp->deleted_at=="")
 							<a href="">Desactivar</a> 
-							/ <a href="">Modificar</a>
+							/ <a href="{{URL::action('Controller_empleado@mempleado',['id_empleado'=>$emp->id_empleado])}}">Modificar</a>
 							@else
 							<a href="">Activar</a>/
 							<a href="">Eliminar</a>

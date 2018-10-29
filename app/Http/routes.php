@@ -69,11 +69,18 @@ Route::POST('/altaentrada', 'Controller_entrada@altaentrada')->name('altaentrada
 
 //ruta para realizar la alta de entrada en el perfil administrador
 Route::get('/reporteentrada', 'Controller_entrada@reporteentrada')->name('reporteentrada');
-//ruta para realizar la consulta de departamentos en el perfil administrador
+
+//ruta para realizar la alta de departamentos en el perfil administrador
 Route::POST('/altadepartamento', 'Controller_departamentos@altadepartamento')->name('altadepartamento');
 
-//ruta para realizar la consulta de cliente en el perfil administrador
+//ruta para realizar la consulta de departamentos en el perfil administrador
 Route::get('/reportedepartamento', 'Controller_departamentos@reportedepartamento')->name('reportedepartamento');
 
-//ruta para realizar la consulta de departamentos en el perfil administrador
+//ruta para realizar actualizar los datos de la empresa en el perfil administrador
 Route::POST('/actualizaempresa', 'Controller_empresa@actualizaempresa')->name('actualizaempresa');
+
+//ruta para la vista de la modificacion empleado en el perfil administrador
+Route::get('/mempleado/{$id_empleado}', 'Controller_empleado@mempleado')->name('mempleado');
+
+//ruta para realizar actualizar los datos de empleado en el perfil administrador
+Route::POST('/actualizaempleado', 'Controller_empleado@actualizaempleado')->name('actualizaempleado');
