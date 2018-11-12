@@ -53,7 +53,6 @@ class Controller_entrada extends Controller
 									->get();	
 			return view("entrada.busqueda_entrada")
 			->with("municipios",$municipios)
-			->with("entradas",$entradas)
 			->with("departamentos",$departamentos)
 			->with("clientes",$clientes)
 			->with("proveedores",$proveedores)

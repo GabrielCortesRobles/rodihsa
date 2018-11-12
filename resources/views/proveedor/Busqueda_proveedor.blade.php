@@ -36,7 +36,7 @@
 							<td>
 							@if($prov->deleted_at=="")
 							<a href="">Desactivar</a> 
-							/ <a href="">Modificar</a>
+							/<a href="{{URL::action('Controller_proveedor@mproveedor',['id_proveedor'=>$prov->id_proveedor])}}">Modificar</a>
 							@else
 							<a href="">Activar</a>/
 							<a href="">Eliminar</a>

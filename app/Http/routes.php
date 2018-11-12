@@ -81,6 +81,13 @@ Route::POST('/actualizaempresa', 'Controller_empresa@actualizaempresa')->name('a
 
 //ruta para la vista de la modificacion empleado en el perfil administrador
 Route::get('/mempleado/{id_empleado}', 'Controller_empleado@mempleado')->name('mempleado');
+Route::get('/mcliente/{id_cliente}', 'Controller_cliente@mcliente')->name('mcliente');
+Route::get('/mproveedor/{id_proveedor}', 'Controller_proveedor@mproveedor')->name('mproveedor');
+Route::get('/mproducto/{id_producto}', 'Controller_productos@mproducto')->name('mproducto');
 
 //ruta para realizar actualizar los datos de empleado en el perfil administrador
 Route::POST('/actualizaempleado', 'Controller_empleado@actualizaempleado')->name('actualizaempleado');
+Route::POST('/actualizacliente', 'Controller_cliente@actualizacliente')->name('actualizacliente');
+Route::POST('/actualizaproveedor', 'Controller_proveedor@actualizaproveedor')->name('actualizaproveedor');
+
+Route::POST('/actualizaproducto', 'Controller_productos@actualizaproducto')->name('actualizaproducto');

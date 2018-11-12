@@ -37,9 +37,10 @@
 							<td>{{$cl->correo}}</td>
 							<td>{{$cl->telefono}}</td>
 							<td>
+							<td>
 							@if($cl->deleted_at=="")
 							<a href="">Desactivar</a> 
-							/ <a href="">Modificar</a>
+							/ <a href="{{URL::action('Controller_cliente@mcliente',['id_cliente'=>$cl->id_cliente])}}">Modificar</a>
 							@else
 							<a href="">Activar</a>/
 							<a href="">Eliminar</a>
