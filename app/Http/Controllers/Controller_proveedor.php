@@ -182,7 +182,6 @@ class Controller_proveedor extends Controller
 		}
 		$proveedor->nom_proveedor = $request->nom_proveedor;
 		$proveedor->rfc_proveedor = $request->rfc_proveedor;
-		$proveedor->archivo = $img2;
 		$proveedor->id_municipio = $request->id_municipio;
 		$proveedor->localidad = $request->localidad;
 		$proveedor->cp = $request->cp;

@@ -48,6 +48,14 @@
 						@endif
 					</div>
 					
+						<div class="col-md-14">
+							<label>CURP</label>
+							<input type="text" class="form-control is-valid" id="" placeholder="Ingresa tu curp" name='curp_cliente' value='{{$mcliente->curp_cliente}}' required>
+						</div>
+						@if($errors->first('curp_cliente'))
+						<i>{{$errors->first('curp_cliente')}}</i>
+						@endif
+						
 					<div class="col-md-14">
 						<label>Calle :</label>
 						<input type="text" class="form-control is-valid" id="" placeholder="Nombre de la calle" name='calle' value='{{$mcliente->calle}}' required>
@@ -59,7 +67,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<label>Número interior :</label>
-							<input type="text" class="form-control is-valid" id="customControlValidation4" placeholder="Numero de la calle" name='numero_interior' value='{{$mcliente->num_interior}}' required>
+							<input type="text" class="form-control is-valid" id="customControlValidation4" placeholder="Numero de la calle" name='num_interior' value='{{$mcliente->num_interior}}' required>
 						@if($errors->first('num_interior'))
 						<i>{{$errors->first('num_interior')}}</i>
 						@endif
@@ -67,7 +75,7 @@
 						
 						<div class="col-md-6">
 							<label>Número exterior :</label>
-							<input type="text" class="form-control is-valid" id="customControlValidation4" placeholder="Numero de la calle" name='numero_exterior' value='{{$mcliente->num_exterior}}' required>
+							<input type="text" class="form-control is-valid" id="customControlValidation4" placeholder="Numero de la calle" name='num_exterior' value='{{$mcliente->num_exterior}}' required>
 						</div>
 						@if($errors->first('num_exterior'))
 						<i>{{$errors->first('num_exterior')}}</i>
@@ -155,5 +163,4 @@
 
 			</form>
 		</fieldset>
-	</body>
-</html>
+@stop

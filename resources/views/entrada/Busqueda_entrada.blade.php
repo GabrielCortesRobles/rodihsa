@@ -26,7 +26,7 @@
 							<tr>
 								<td>{{$ent->id_entrada}}</td>
 								<td>{{$ent->nom_proveedor}} </td>
-								<td>{{$ent->nom_empleado}} {{$ent->ap_empleado}} {{$ent->am_empleado}}</td>
+								<td>{{$ent->nombre}}</td>
 								<td>{{$ent->total}}</td>
 								<td>
 								@if($ent->deleted_at=="")

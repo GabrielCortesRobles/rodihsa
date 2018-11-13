@@ -32,11 +32,10 @@
 								<img src="{{asset('Images/'.$cl->archivo)}}" heigth=50 width=50>
 							</td>
 							<td>{{$cl->nom_cliente}} {{$cl->ap_cliente}} {{$cl->am_cliente}}</td>
-							<td>{{$cl->calle}} {{$cl->num_interior}} {{$cl->num_exterior}}, {{$cl->localidad}}</td>
+							<td>{{$cl->calle}} {{$cl->num_interior}}, {{$cl->num_exterior}}, {{$cl->localidad}}</td>
 							<td>{{$cl->curp_cliente}}</td>
 							<td>{{$cl->correo}}</td>
 							<td>{{$cl->telefono}}</td>
-							<td>
 							<td>
 							@if($cl->deleted_at=="")
 							<a href="">Desactivar</a> 

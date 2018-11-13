@@ -18,26 +18,7 @@ use App\entradas;
 
 class Controller_cliente extends Controller
 {
- public function altacliente()
-    {    $clavequesigue = clientes::withTrashed()->orderBy('id_cliente','desc')
-								->take(1)
-								->get();
-     if (count($clavequesigue)==0){
-		 $idcl= 1;
-	 }
-	 else{
-		$idcl = $clavequesigue[0]->id_cliente+1;
-	 }
-		//select * from carreras 
-		//ORM ELOQUENT
-		// select * from carreras where activo = 'si' order by nombre asc
-		$municipios = municipios::orderBy('municipio','asc')
-							  ->get();
-		//return $carreras;
-      return view ("cliente.Modal_alta_cliente")
-	  ->with('municipios',$municipios)
-	  ->with('idcl',$idcl);
-    }
+
     public function guardacliente(Request $request)
     {
         
@@ -115,8 +96,8 @@ class Controller_cliente extends Controller
 			$entradas = entradas::withTrashed()
 									->orderBy('id_entrada','ASC')
 									->get();
-			$clientes = clientes::withTrashed()
-									->orderBy('id_cliente','ASC')
+			$empleados = empleados::withTrashed()
+									->orderBy('id_empleado','ASC')
 									->get();	
 			return view("cliente.Busqueda_cliente")
 			->with("municipios",$municipios)
@@ -124,7 +105,7 @@ class Controller_cliente extends Controller
 			->with("clientes",$clientes)
 			->with("proveedores",$proveedores)
 			->with("productos",$productos)
-			->with("clientes",$clientes)
+			->with("empleados",$empleados)
 			->with("proveedores",$proveedores)
 			->with("regimenfiscales",$regimenfiscales)
 			->with("regimen",$regimen[0]->descripcion)
@@ -168,7 +149,7 @@ class Controller_cliente extends Controller
 		->with("clientes",$clientes)
 		->with("proveedores",$proveedores)
 		->with("productos",$productos)
-		->with("clientes",$clientes)
+		->with("empleados",$empleados)
 		->with("proveedores",$proveedores)
 		->with("regimenfiscales",$regimenfiscales)
 		->with("regimen",$regimen[0]->descripcion)
@@ -211,7 +192,6 @@ class Controller_cliente extends Controller
 		{
 			$cliente->archivo = $img2;
 		}
-		
 		$cliente->id_cliente = $request->id_cliente;
 		$cliente->nom_cliente = $request->nom_cliente;
 		$cliente->ap_cliente = $request->ap_cliente;
@@ -219,7 +199,6 @@ class Controller_cliente extends Controller
 		$cliente->rfc_cliente = $request->rfc_cliente;
 		$cliente->curp_cliente = $request->curp_cliente;
 		$cliente->fecha_nacimiento = $request->fecha_nacimiento;
-		$cliente->archivo = $img2;
 		$cliente->id_municipio = $request->id_municipio;
 		$cliente->localidad = $request->localidad;
 		$cliente->cp = $request->cp;

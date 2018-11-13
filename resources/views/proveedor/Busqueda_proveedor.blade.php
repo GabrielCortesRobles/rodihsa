@@ -29,7 +29,8 @@
 							<td>
 								<img src="{{asset('Images/'.$prov->archivo)}}" heigth=50 width=50>
 							</td>
-							<td>{{$prov->rfc_proveedor}}</td><td>{{$prov->nom_proveedor}}</td>
+							<td>{{$prov->rfc_proveedor}}</td>
+							<td>{{$prov->nom_proveedor}}</td>
 							<td>{{$prov->calle}} {{$prov->num_interior}} {{$prov->num_exterior}}, {{$prov->localidad}}, {{$prov->id_municipio}}</td>
 							<td>{{$prov->correo}}</td>
 							<td>{{$prov->telefono}}</td>
