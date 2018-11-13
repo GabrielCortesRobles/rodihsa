@@ -29,11 +29,11 @@
 							<td>{{$dep->departamento}}</td>
 							<td>
 							@if($dep->deleted_at=="")
-							<a href="">Desactivar</a> 
+							<a href="{{URL::action('Controller_departamentos@eliminad',['id_departamento'=>$dep->id_departamento])}}">Desactivar</a> 
 							/<a href="{{URL::action('Controller_departamentos@mdepartamento',['id_departamento'=>$dep->id_departamento])}}">Modificar</a>
 							@else
-							<a href="">Activar</a>/
-							<a href="">Eliminar</a>
+							<a href="{{URL::action('Controller_departamentos@restaurad',['id_departamento'=>$dep->id_departamento])}}"> Activar</a>/
+							<a href="{{URL::action('Controller_departamentos@efisicad',['id_departamento'=>$dep->id_departamento])}}"> Eliminar</a>
 							@endif
 							</td>
 						</tr>

@@ -215,4 +215,24 @@ class Controller_cliente extends Controller
 	
 	
 }
+	public function restaurac($id_cliente)
+	{
+		clientes::withTrashed()->where('id_cliente',$id_cliente)->restore();
+		
+		return redirect("reportecliente");
+		
+	}
+	public function efisicac($id_cliente)
+	{
+		clientes::withTrashed()->where('id_cliente',$id_cliente)->forceDelete();
+		
+		return redirect("reportecliente");
+    }
+	
+	public function eliminac($id_cliente)
+	{
+		clientes::find($id_cliente)->delete();
+		
+		return redirect("reportecliente");
+	}
 }

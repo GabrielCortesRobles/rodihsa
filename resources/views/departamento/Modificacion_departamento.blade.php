@@ -9,9 +9,9 @@
 			<h2>Modificación Departamentos</h2>
 			</div>
 			<hr>
-			<div class="col-md-12"  hidden>
+			<div class="col-md-12" >
 				<label>ID :</label>
-				<input type="text" class="form-control is-valid" id="" name='id_departamento' value='{{$mdepartamento->id_proveedor}}'>
+				<input type="text" class="form-control is-valid" id="" name='id_departamento' value='{{$mdepartamento->id_departamento}}'>
 			</div>
 			
 			<div class="col-md-14">

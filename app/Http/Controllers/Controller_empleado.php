@@ -251,4 +251,25 @@ class Controller_empleado extends Controller
 		
 		return redirect ('administrador');
 	}
+	public function restaurae($id_empleado)
+	{
+		empleados::withTrashed()->where('id_empleado',$id_empleado)->restore();
+		
+		return redirect("reporteempleado");
+		
+	}
+	public function efisicae($id_empleado)
+	{
+		empleados::withTrashed()->where('id_empleado',$id_empleado)->forceDelete();
+		
+		return redirect("reporteempleado");
+    }
+	
+	public function eliminae($id_empleado)
+	{
+		empleados::find($id_empleado)->delete();
+		
+		return redirect("reporteempleado");
+	}
+	
 }

@@ -206,5 +206,25 @@ class Controller_productos extends Controller
 		
 		return redirect ('administrador');
 	}
+		public function restaurapr($id_producto)
+	{
+		productos::withTrashed()->where('id_producto',$id_producto)->restore();
+		
+		return redirect("reporteproducto");
+		
+	}
+	public function efisicapr($id_producto)
+	{
+		productos::withTrashed()->where('id_producto',$id_producto)->forceDelete();
+		
+		return redirect("reporteproducto");
+    }
+	
+	public function eliminapr($id_producto)
+	{
+		productos::find($id_producto)->delete();
+		
+		return redirect("reporteproducto");
+	}
 }
 

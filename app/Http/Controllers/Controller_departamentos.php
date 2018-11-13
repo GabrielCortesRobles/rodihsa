@@ -51,7 +51,9 @@ class Controller_departamentos extends Controller
     //funcio para realizar la consulta de departamentos
 	public function reportedepartamento()
 	{
-		$departamentos = departamentos::all();
+		$departamentos = departamentos::withTrashed()
+									->orderBy('id_departamento','asc')
+														  ->get();
 			$empresas = empresas::where('id_empresa','=',1)->get();
 			$id_municipio = $empresas[0]->id_municipio;
 			$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
@@ -161,5 +163,26 @@ class Controller_departamentos extends Controller
 		$departamentos->save();
 		
 		return redirect ('administrador');
+	}
+	public function restaurad($id_departamento)
+	{
+		departamentos::withTrashed()->where('id_departamento',$id_departamento)->restore();
+		
+		return redirect("reportedepartamento");
+		
+	}
+	public function efisicad($id_departamento)
+	{
+		departamentos::withTrashed()->where('id_departamento',$id_departamento)->forceDelete();
+		
+		return redirect("reportedepartamento");
+	
+    }
+	
+	public function eliminad($id_departamento)
+	{
+		departamentos::find($id_departamento)->delete();
+		
+		return redirect("reportedepartamento");
 	}
 }

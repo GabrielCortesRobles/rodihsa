@@ -36,11 +36,11 @@
 							<td>{{$prov->telefono}}</td>
 							<td>
 							@if($prov->deleted_at=="")
-							<a href="{{URL::action('Controller@eliminap',['id_proveedor'=>$prov->id_proveedor])}}"> Desactivar</a> 
+							<a href="{{URL::action('Controller_proveedor@eliminap',['id_proveedor'=>$prov->id_proveedor])}}"> Desactivar</a> 
 							/<a href="{{URL::action('Controller_proveedor@mproveedor',['id_proveedor'=>$prov->id_proveedor])}}">Modificar</a>
 							@else
-							<a href="{{URL::action('Controller_provee@restaurap',['id_proveedor'=>$prov->id_proveedor])}}"> Activar</a>/
-							<a href="{{URL::action('Controller_proveedor@mproveedor@efisicap',['id_proveedor'=>$prov->id_proveedor])}}"> Eliminar</a>
+							<a href="{{URL::action('Controller_proveedor@restaurap',['id_proveedor'=>$prov->id_proveedor])}}"> Activar</a>/
+							<a href="{{URL::action('Controller_proveedor@efisicap',['id_proveedor'=>$prov->id_proveedor])}}"> Eliminar</a>
 							@endif
 							</td>
 						</tr>

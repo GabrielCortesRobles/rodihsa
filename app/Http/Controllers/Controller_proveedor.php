@@ -199,14 +199,20 @@ class Controller_proveedor extends Controller
 	{
 		proveedores::withTrashed()->where('id_proveedor',$id_proveedor)->restore();
 		
-		return view('proveedor.Busqueda_proveedor');
+		return redirect("reporteproveedor");
 		
 	}
-	public function efisicam($idm)
+	public function efisicap($id_proveedor)
 	{
 		proveedores::withTrashed()->where('id_proveedor',$id_proveedor)->forceDelete();
 		
-		return redirect ('administrador');
-	
+		return redirect("reporteproveedor");
     }
+	
+	public function eliminap($id_proveedor)
+	{
+		proveedores::find($id_proveedor)->delete();
+		
+		return redirect("reporteproveedor");
+	}
 }

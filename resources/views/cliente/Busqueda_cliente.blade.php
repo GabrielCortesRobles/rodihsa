@@ -38,11 +38,11 @@
 							<td>{{$cl->telefono}}</td>
 							<td>
 							@if($cl->deleted_at=="")
-							<a href="">Desactivar</a> 
+							<a href="{{URL::action('Controller_cliente@eliminac',['id_cliente'=>$cl->id_cliente])}}">Desactivar</a> 
 							/ <a href="{{URL::action('Controller_cliente@mcliente',['id_cliente'=>$cl->id_cliente])}}">Modificar</a>
 							@else
-							<a href="">Activar</a>/
-							<a href="">Eliminar</a>
+							<a href="{{URL::action('Controller_cliente@restaurac',['id_cliente'=>$cl->id_cliente])}}"> Activar</a>/
+							<a href="{{URL::action('Controller_cliente@efisicac',['id_cliente'=>$cl->id_cliente])}}"> Eliminar</a>
 							@endif
 							</td>
 						</tr>
