@@ -4,7 +4,7 @@
 <fieldset class='form'>
 	<br>
 	<div align='center'>
-		<h2>Resultado de busqueda Empleado</h2>
+		<h2>Resultado de busqueda Departamento</h2>
 	</div>
 	<hr>
 	<br><br>
@@ -30,7 +30,7 @@
 							<td>
 							@if($dep->deleted_at=="")
 							<a href="">Desactivar</a> 
-							/ <a href="">Modificar</a>
+							/<a href="{{URL::action('Controller_departamentos@mdepartamento',['id_departamento'=>$dep->id_departamento])}}">Modificar</a>
 							@else
 							<a href="">Activar</a>/
 							<a href="">Eliminar</a>

@@ -84,10 +84,16 @@ Route::get('/mempleado/{id_empleado}', 'Controller_empleado@mempleado')->name('m
 Route::get('/mcliente/{id_cliente}', 'Controller_cliente@mcliente')->name('mcliente');
 Route::get('/mproveedor/{id_proveedor}', 'Controller_proveedor@mproveedor')->name('mproveedor');
 Route::get('/mproducto/{id_producto}', 'Controller_productos@mproducto')->name('mproducto');
+Route::get('/mdepartamento/{id_departamento}', 'Controller_departamentos@mdepartamento')->name('mdepartamento');
 
 //ruta para realizar actualizar los datos de empleado en el perfil administrador
 Route::POST('/actualizaempleado', 'Controller_empleado@actualizaempleado')->name('actualizaempleado');
 Route::POST('/actualizacliente', 'Controller_cliente@actualizacliente')->name('actualizacliente');
 Route::POST('/actualizaproveedor', 'Controller_proveedor@actualizaproveedor')->name('actualizaproveedor');
+Route::POST('/actualizadepartamento', 'Controller_departamentos@actualizadepartamento')->name('actualizadepartamento');
 
 Route::POST('/actualizaproducto', 'Controller_productos@actualizaproducto')->name('actualizaproducto');
+
+Route::get('/eliminap/{id_proveedor}','Controller_proveedor@eliminap')->name('eliminap');
+Route::get('/restaurap/{id_proveedor}','Controller_proveedor@restaurap')->name('restaurap');
+Route::get('/efisicap/{id_proveedor}','Controller_proveedor@efisicap')->name('efisicap');

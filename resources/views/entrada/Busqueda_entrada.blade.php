@@ -19,7 +19,7 @@
 								<th scope="col">NOMBRE PROVEEDOR</th>
 								<th scope="col">NOMBRE DEL EMPLEADO</th>
 								<th scope="col">TOTAL</th>
-								<th scope="col">OPCIONES</th>
+								
 							</tr>
 						</thead>
 						@foreach($entradas as $ent)
@@ -28,15 +28,7 @@
 								<td>{{$ent->nom_proveedor}} </td>
 								<td>{{$ent->nombre}}</td>
 								<td>{{$ent->total}}</td>
-								<td>
-								@if($ent->deleted_at=="")
-								<a href="">Desactivar</a> 
-								/ <a href="">Modificar</a>
-								@else
-								<a href="">Activar</a>/
-								<a href="">Eliminar</a>
-								@endif
-								</td>
+								
 							</tr>
 						@endforeach
 					</table>
