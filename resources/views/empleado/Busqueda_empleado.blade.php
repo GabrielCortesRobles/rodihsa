@@ -39,11 +39,11 @@
 							<td>{{$emp->telefono}}</td>
 							<td>
 							@if($emp->deleted_at=="")
-							<a href="">Desactivar</a> 
+							<a href="{{URL::action('Controller_empleado@eliminae',['id_empleado'=>$emp->id_empleado])}}"> Desactivar</a> 
 							/ <a href="{{URL::action('Controller_empleado@mempleado',['id_empleado'=>$emp->id_empleado])}}">Modificar</a>
 							@else
-							<a href="">Activar</a>/
-							<a href="">Eliminar</a>
+							<a href="{{URL::action('Controller_empleado@restaurae',['id_empleado'=>$emp->id_empleado])}}"> Activar</a>/
+							<a href="{{URL::action('Controller_empleado@efisicae',['id_empleado'=>$emp->id_empleado])}}"> Eliminar</a>
 							@endif
 							</td>
 						</tr>

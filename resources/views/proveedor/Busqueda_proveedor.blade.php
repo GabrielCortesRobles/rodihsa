@@ -29,17 +29,18 @@
 							<td>
 								<img src="{{asset('Images/'.$prov->archivo)}}" heigth=50 width=50>
 							</td>
-							<td>{{$prov->rfc_proveedor}}</td><td>{{$prov->nom_proveedor}}</td>
+							<td>{{$prov->rfc_proveedor}}</td>
+							<td>{{$prov->nom_proveedor}}</td>
 							<td>{{$prov->calle}} {{$prov->num_interior}} {{$prov->num_exterior}}, {{$prov->localidad}}, {{$prov->id_municipio}}</td>
 							<td>{{$prov->correo}}</td>
 							<td>{{$prov->telefono}}</td>
 							<td>
 							@if($prov->deleted_at=="")
-							<a href="">Desactivar</a> 
-							/ <a href="">Modificar</a>
+							<a href="{{URL::action('Controller_proveedor@eliminap',['id_proveedor'=>$prov->id_proveedor])}}"> Desactivar</a> 
+							/<a href="{{URL::action('Controller_proveedor@mproveedor',['id_proveedor'=>$prov->id_proveedor])}}">Modificar</a>
 							@else
-							<a href="">Activar</a>/
-							<a href="">Eliminar</a>
+							<a href="{{URL::action('Controller_proveedor@restaurap',['id_proveedor'=>$prov->id_proveedor])}}"> Activar</a>/
+							<a href="{{URL::action('Controller_proveedor@efisicap',['id_proveedor'=>$prov->id_proveedor])}}"> Eliminar</a>
 							@endif
 							</td>
 						</tr>

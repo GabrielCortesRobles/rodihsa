@@ -24,7 +24,7 @@
 								<label>*Empleado :</label>
 								<select class="custom-select" name='id_empleado' required>
 									@foreach($empleados as $emp)
-					<option value='{{$emp->id_empleado}}'>{{$emp->nom_empleado}} {{$emp->ap_empleado}} {{$emp->am_empleado}}</option>
+									<option value='{{$emp->id_empleado}}'>{{$emp->nom_empleado}} {{$emp->ap_empleado}} {{$emp->am_empleado}}</option>
 									@endforeach
 								</select>
 						</div>

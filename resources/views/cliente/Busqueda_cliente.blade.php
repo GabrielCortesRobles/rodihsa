@@ -32,17 +32,17 @@
 								<img src="{{asset('Images/'.$cl->archivo)}}" heigth=50 width=50>
 							</td>
 							<td>{{$cl->nom_cliente}} {{$cl->ap_cliente}} {{$cl->am_cliente}}</td>
-							<td>{{$cl->calle}} {{$cl->num_interior}} {{$cl->num_exterior}}, {{$cl->localidad}}</td>
+							<td>{{$cl->calle}} {{$cl->num_interior}}, {{$cl->num_exterior}}, {{$cl->localidad}}</td>
 							<td>{{$cl->curp_cliente}}</td>
 							<td>{{$cl->correo}}</td>
 							<td>{{$cl->telefono}}</td>
 							<td>
 							@if($cl->deleted_at=="")
-							<a href="">Desactivar</a> 
-							/ <a href="">Modificar</a>
+							<a href="{{URL::action('Controller_cliente@eliminac',['id_cliente'=>$cl->id_cliente])}}">Desactivar</a> 
+							/ <a href="{{URL::action('Controller_cliente@mcliente',['id_cliente'=>$cl->id_cliente])}}">Modificar</a>
 							@else
-							<a href="">Activar</a>/
-							<a href="">Eliminar</a>
+							<a href="{{URL::action('Controller_cliente@restaurac',['id_cliente'=>$cl->id_cliente])}}"> Activar</a>/
+							<a href="{{URL::action('Controller_cliente@efisicac',['id_cliente'=>$cl->id_cliente])}}"> Eliminar</a>
 							@endif
 							</td>
 						</tr>

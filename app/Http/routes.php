@@ -81,6 +81,47 @@ Route::POST('/actualizaempresa', 'Controller_empresa@actualizaempresa')->name('a
 
 //ruta para la vista de la modificacion empleado en el perfil administrador
 Route::get('/mempleado/{id_empleado}', 'Controller_empleado@mempleado')->name('mempleado');
+Route::get('/mcliente/{id_cliente}', 'Controller_cliente@mcliente')->name('mcliente');
+Route::get('/mproveedor/{id_proveedor}', 'Controller_proveedor@mproveedor')->name('mproveedor');
+Route::get('/mproducto/{id_producto}', 'Controller_productos@mproducto')->name('mproducto');
+Route::get('/mdepartamento/{id_departamento}', 'Controller_departamentos@mdepartamento')->name('mdepartamento');
 
 //ruta para realizar actualizar los datos de empleado en el perfil administrador
 Route::POST('/actualizaempleado', 'Controller_empleado@actualizaempleado')->name('actualizaempleado');
+Route::POST('/actualizacliente', 'Controller_cliente@actualizacliente')->name('actualizacliente');
+Route::POST('/actualizaproveedor', 'Controller_proveedor@actualizaproveedor')->name('actualizaproveedor');
+Route::POST('/actualizadepartamento', 'Controller_departamentos@actualizadepartamento')->name('actualizadepartamento');
+
+Route::POST('/actualizaproducto', 'Controller_productos@actualizaproducto')->name('actualizaproducto');
+
+Route::get('/eliminap/{id_proveedor}','Controller_proveedor@eliminap')->name('eliminap');
+Route::get('/restaurap/{id_proveedor}','Controller_proveedor@restaurap')->name('restaurap');
+Route::get('/efisicap/{id_proveedor}','Controller_proveedor@efisicap')->name('efisicap');
+
+Route::get('/eliminad/{id_departamento}','Controller_departamentos@eliminad')->name('eliminad');
+Route::get('/restaurad/{id_departamento}','Controller_departamentos@restaurad')->name('restaurad');
+Route::get('/efisicad/{id_departamento}','Controller_departamentos@efisicad')->name('efisicad');
+
+
+Route::get('/eliminapr/{id_producto}','Controller_productos@eliminapr')->name('eliminapr');
+Route::get('/restaurapr/{id_producto}','Controller_productos@restaurapr')->name('restaurapr');
+Route::get('/efisicapr/{id_producto}','Controller_productos@efisicapr')->name('efisicapr');
+
+
+Route::get('/eliminac/{id_cliente}','Controller_cliente@eliminac')->name('eliminac');
+Route::get('/restaurac/{id_cliente}','Controller_cliente@restaurac')->name('restaurac');
+Route::get('/efisicac/{id_cliente}','Controller_cliente@efisicac')->name('efisicac');
+
+Route::get('/eliminae/{id_empleado}','Controller_empleado@eliminae')->name('eliminae');
+Route::get('/restaurae/{id_empleado}','Controller_empleado@restaurae')->name('restaurae');
+Route::get('/efisicae/{id_empleado}','Controller_empleado@efisicae')->name('efisicae');
+
+
+
+
+
+
+
+
+
+

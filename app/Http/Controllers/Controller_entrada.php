@@ -45,21 +45,22 @@ class Controller_entrada extends Controller
 			$productos = productos::withTrashed()
 									->orderBy('id_producto','ASC')
 									->get();
-			$entradas = entradas::withTrashed()
-									->orderBy('id_entrada','ASC')
-									->get();
+			$entradas = \DB::select("SELECT ent.id_entrada, p.nom_proveedor, CONCAT(e.nom_empleado,' ',e.ap_empleado,' ',e.am_empleado) AS nombre, ent.total, ent.deleted_at
+										FROM entradas AS ent
+										INNER JOIN proveedores AS p ON p.id_proveedor=ent.id_proveedor
+										INNER JOIN empleados AS e ON e.id_empleado=ent.id_empleado;");
 			$empleados = empleados::withTrashed()
 									->orderBy('id_empleado','ASC')
 									->get();	
 			return view("entrada.busqueda_entrada")
 			->with("municipios",$municipios)
-			->with("entradas",$entradas)
 			->with("departamentos",$departamentos)
 			->with("clientes",$clientes)
 			->with("proveedores",$proveedores)
 			->with("productos",$productos)
 			->with("empleados",$empleados)
 			->with("proveedores",$proveedores)
+			->with("entradas",$entradas)
 			->with("regimenfiscales",$regimenfiscales)
 			->with("regimen",$regimen[0]->descripcion)
 			->with("id_regimenfiscal",$id_regimenfiscal)

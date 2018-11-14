@@ -37,11 +37,11 @@
 							<td>{{$prod->precio_mayoreo}}</td>
 							<td>
 							@if($prod->deleted_at=="")
-							<a href="">Desactivar</a> 
-							/ <a href="">Modificar</a>
+							<a href="{{URL::action('Controller_productos@eliminapr',['id_producto'=>$prod->id_producto])}}">Desactivar</a> 
+							/ <a href="{{URL::action('Controller_productos@mproducto',['id_producto'=>$prod->id_producto])}}">Modificar</a>
 							@else
-							<a href="">Activar</a>/
-							<a href="">Eliminar</a>
+							<a href="{{URL::action('Controller_productos@restaurapr',['id_producto'=>$prod->id_producto])}}"> Activar</a>/
+							<a href="{{URL::action('Controller_productos@efisicapr',['id_producto'=>$prod->id_producto])}}"> Eliminar</a>
 							@endif
 							</td>
 						</tr>
