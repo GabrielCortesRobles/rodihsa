@@ -231,7 +231,6 @@ class Controller_empleado extends Controller
 		$empleado->rfc_empleado = $request->rfc_empleado;
 		$empleado->curp_empleado = $request->curp_empleado;
 		$empleado->fecha_nacimiento = $request->fecha_nacimiento;
-		$empleado->archivo = $img2;
 		$empleado->id_municipio = $request->id_municipio;
 		$empleado->localidad = $request->localidad;
 		$empleado->cp = $request->cp;
