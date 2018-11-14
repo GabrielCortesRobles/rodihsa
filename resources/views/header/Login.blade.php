@@ -25,7 +25,7 @@
 					<h5 class="card-title">Inicia sesión con tu usuario y contraseña.</h5>
 					<p class="card-text"></p>
 					
-					<form class="was-validated" action="{{route('session')}}" method='POST'>
+					<form class="was-validated" action="{{route('validalogin')}}" method='POST'>
 						{{csrf_field()}}
 						<div align="center">
 						<!-- Caja de texto para ingresar el correo -->
@@ -39,9 +39,9 @@
 						<!-- Caja de texto para ingresar la contraseña -->
 						<div class="col-md-10">
 							<label>Contraseña: </label>
-							<input type="password" class="form-control is-valid" id="customControlValidation4" placeholder="Ingrese su contraseña" name='pass_usuario' required>
-							@if($errors->first('pass_usuario'))
-								<i>{{$errors->first('pass_usuario')}}</i>
+							<input type="password" class="form-control is-valid" id="customControlValidation4" placeholder="Ingrese su contraseña" name='contrasena' required>
+							@if($errors->first('contrasena'))
+								<i>{{$errors->first('contrasena')}}</i>
 							@endif
 						</div>
 						</div>
@@ -51,6 +51,9 @@
 							<input type="submit" class="btn btn-primary" value='Enviar'>
 						</div>
 					</form>
+					 @if(Session::has('error'))
+					<div>{{Session::get('error')}}</div>
+					@endif
 				</div>
 			</div>
 		</div>

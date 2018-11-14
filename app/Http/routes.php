@@ -16,7 +16,7 @@ Route::get('/', function () {
 });*/
 
 //ruta para la vista del login
-Route::get('/', 'Controller_administrador@login');
+Route::get('/', 'Controller_administrador@login')->name('/');
 
 //ruta para la vista principal del perfil administrador
 Route::get('/administrador', 'Controller_administrador@inicio')->name('administrador');
@@ -116,7 +116,13 @@ Route::get('/eliminae/{id_empleado}','Controller_empleado@eliminae')->name('elim
 Route::get('/restaurae/{id_empleado}','Controller_empleado@restaurae')->name('restaurae');
 Route::get('/efisicae/{id_empleado}','Controller_empleado@efisicae')->name('efisicae');
 
+Route::get('/login', 'Controller_empleado@login')->name('login');
 
+Route::POST('/validalogin', 'Controller_empleado@validalogin')->name('validalogin');
+
+Route::get('/principal', 'Controller_empleado@principal')->name('principal');
+
+Route::get('/cerrarsesion', 'Controller_empleado@cerrarsesion')->name('cerrarsesion');
 
 
 

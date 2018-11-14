@@ -194,7 +194,6 @@ class Controller_productos extends Controller
 		$producto->codigo = $request->codigo;
 		$producto->codigo_sat = $request->codigo_sat;
 		$producto->existencia = $request->existencia;
-		$producto->archivo = $img2;
 		$producto->descripcion = $request->descripcion;
 		$producto->precio_cu = $request->precio_cu;
 		$producto->precio_menudeo = $request->precio_menudeo;

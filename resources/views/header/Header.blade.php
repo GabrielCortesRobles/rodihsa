@@ -27,6 +27,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
+			@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 				<li class="nav-item active">
 					<div class="dropdown">
 						<button class="btn btn-darck dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,6 +54,7 @@
 						</div>
 					</div>
 				</li>
+				@endif
 	  
 				<li class="nav-item">
 					<div class="dropdown">
@@ -147,13 +149,15 @@
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit" hidden>Buscar</button>
 					</form>
 				</div>
+				@if(Session::get('sesionprivilegio_admin')=='1')
 				<div class="dropdown-divider"></div>
 			
 					<div>
 						<button class="dropdown-item" type="submit" data-toggle="modal" data-target="#empresa">Empresa</button>
 					</div>
-				
+				@endif
 				<div>
+				
 				<!-- restauracion de la base de datos -->
 					<form class="form-inline my-2 my-lg-0" action="http://192.168.2.129:8080/systelecoms/mysql/index.php">
 						<button class="dropdown-item" type="submit">Restore</button>
@@ -168,7 +172,7 @@
 				<div class="dropdown-divider"></div>
 				<div>
 				<!-- Cerrar session -->
-					<form class="form-inline my-2 my-lg-0" action="http://192.168.2.129:8080/systelecoms/index.php/header/Controller_usuario/logout">
+					<form class="form-inline my-2 my-lg-0" action="{{route('/')}}">
 						<button class="dropdown-item" type="submit">Cerrar sesión</button>
 					</form>
 				</div>
@@ -184,8 +188,6 @@
 	@include('entrada.Modal_alta_entrada')
 	@include('departamento.Modal_alta_departamento')
 	</div>
-	<div>
 	@yield('contenido')
-	</div>
 </body>
 </html>

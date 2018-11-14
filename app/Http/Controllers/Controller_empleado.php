@@ -15,6 +15,7 @@ use App\productos;
 use App\clientes;
 use App\empleados;
 use App\entradas;
+use Session;
 
 class Controller_empleado extends Controller
 {
@@ -270,5 +271,72 @@ class Controller_empleado extends Controller
 		
 		return redirect("reporteempleado");
 	}
+	 Public function login()
+    {
+        return redirect("login");
+    }
+
+    Public function principal()
+    {
+        if($sname = Session::get('sesionname')=="")
+        {
+            Session::flash('error', 'Es necesario antes de entrar');
+            return redirect()->route('login');  
+        }
+        else
+        {
+            return redirect ('administrador');
+        }
+    }
+	 Public function validalogin(Request $request)
+    {
+        $correo = $request->correo;
+        $contrasena = $request->contrasena;
+        $consulta = empleados::withTrashed()
+                                ->where('correo', $correo)
+                                ->where('contrasena', $contrasena)
+                                ->get();
+        if(count($consulta)==0)
+        {
+            Session::flash('error', 'El usuario no existe o la contraseña es incorrecta');
+            return redirect()->route('login');
+        }
+        else
+        {
+            if($consulta[0]->deleted_at !="")
+            {
+                Session::flash('error', 'El usuario esta desactivado, consulte a su administrador');
+                return redirect()->route('login');
+            }
+            else
+            {
+                Session::put('sesionname', $consulta[0]->nombre);
+                Session::put('sesionid_empleado', $consulta[0]->id_empleado);
+                Session::put('sesionprivilegio_almacen', $consulta[0]->privilegio_almacen);
+                Session::put('sesionprivilegio_venta', $consulta[0]->privilegio_venta);
+                Session::put('sesionprivilegio_caja', $consulta[0]->privilegio_caja);
+                Session::put('sesionprivilegio_admin', $consulta[0]->privilegio_admin);
+                //esto sirve para leer las sesiones
+                /*$sname = Session::get('sesionname');
+                $sidu = Session::get('sesionidu');
+                $stipo = Session::get('sesiontipo');
+
+                echo $sname. ' '.$sidu .' '. $stipo;*/
+                return redirect()->route('administrador');
+            }
+        }
+    }
+	 Public function cerrarsesion()
+    {
+        Session::forget('sesionname');
+        Session::forget('sesionprivilegio_admin');
+        Session::forget('sesionprivilegio_almacen');
+        Session::forget('sesionprivilegio_venta');
+        Session::forget('sesionprivilegio_caja');
+        Session::forget('sesionid_empleado');
+        Session::flush();
+        Session::flash('error','Session Cerada corectamente');
+        return redirect ()->route('login');
+    }
 	
 }

@@ -193,7 +193,6 @@ class Controller_proveedor extends Controller
 		$proveedor->activo = $request->activo;
 		$proveedor->save();
 		
-		return redirect ('administrador');
 	}
 	public function restaurap($id_proveedor)
 	{
