@@ -57,6 +57,7 @@
 				@endif
 	  
 				<li class="nav-item">
+				@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_venta')|Session::get('sesionprivilegio_almacen')=='1')
 					<div class="dropdown">
 						<button class="btn btn-darck dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span class="glyphicon glyphicon-align-left" aria-hidden="true">Busqueda</span>
@@ -83,14 +84,18 @@
 							</form>
 						</div>
 						</div>
-					
+					@endif
 				</li>
+				@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_venta')=='1')
 				<li class="nav-item">
+					
 					<!-- Boton que direcciona al modulo de ventas -->
 					<form class="form-inline my-2 my-lg-0" action="{{route('modulo_venta')}}">
 							<button class="btn btn-darck" type="submit">Módulo venta</button>
 					</form>
+				
 				</li>
+				@endif
 				
 				<!--<li class="nav-item">
 					
