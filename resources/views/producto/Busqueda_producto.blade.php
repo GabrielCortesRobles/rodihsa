@@ -21,7 +21,9 @@
 						  <th scope="col">PRECIO CU</th>
 						  <th scope="col">PRECIO MENUDEO</th>
 						  <th scope="col">PRECIO MAYOREO</th>
+						  @if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 						  <th scope="col">OPCIONES</th>
+							@endif
 						</tr>
 					</thead>
 					@foreach($productos as $prod)
@@ -35,6 +37,7 @@
 							<td>{{$prod->precio_cu}}</td>
 							<td>{{$prod->precio_menudeo}}</td>
 							<td>{{$prod->precio_mayoreo}}</td>
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<td>
 							@if($prod->deleted_at=="")
 							<a href="{{URL::action('Controller_productos@eliminapr',['id_producto'=>$prod->id_producto])}}">Desactivar</a> 
@@ -44,6 +47,7 @@
 							<a href="{{URL::action('Controller_productos@efisicapr',['id_producto'=>$prod->id_producto])}}"> Eliminar</a>
 							@endif
 							</td>
+							@endif
 						</tr>
 					@endforeach
 			</table>

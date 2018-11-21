@@ -17,7 +17,9 @@
 							<th scope="col">ID</th>
 							<th scope="col">FOTO</th>
 							<th scope="col">DEPARTAMENTO</th>
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<th scope="col">OPCIONES</th>
+							@endif
 						</tr>
 					</thead>
 					@foreach($departamentos as $dep)
@@ -27,15 +29,21 @@
 							<img src="{{asset('Images/'.$dep->archivo)}}" heigth=50 width=50>
 							</td>
 							<td>{{$dep->departamento}}</td>
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<td>
 							@if($dep->deleted_at=="")
+							
 							<a href="{{URL::action('Controller_departamentos@eliminad',['id_departamento'=>$dep->id_departamento])}}">Desactivar</a> 
 							/<a href="{{URL::action('Controller_departamentos@mdepartamento',['id_departamento'=>$dep->id_departamento])}}">Modificar</a>
+							@endif
 							@else
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<a href="{{URL::action('Controller_departamentos@restaurad',['id_departamento'=>$dep->id_departamento])}}"> Activar</a>/
 							<a href="{{URL::action('Controller_departamentos@efisicad',['id_departamento'=>$dep->id_departamento])}}"> Eliminar</a>
 							@endif
+							
 							</td>
+							@endif
 						</tr>
 					@endforeach
 				</table>
