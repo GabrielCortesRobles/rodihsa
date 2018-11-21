@@ -27,13 +27,14 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-			@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
+			@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')|Session::get('sesionprivilegio_venta')=='1')
 				<li class="nav-item active">
 					<div class="dropdown">
 						<button class="btn btn-darck dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>Nuevo
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_producto">
 								Producto
 							</button>
@@ -43,14 +44,19 @@
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_proveedor">
 								Proveedor
 							</button>
+							@endif
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')|Session::get('sesionprivilegio_venta')=='1')
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_cliente">
 								Cliente
 							</button>
+							@endif
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_entrada">
 								Entrada
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_departamento">
 								Departamento
 							</button>
+							@endif
 						</div>
 					</div>
 				</li>
