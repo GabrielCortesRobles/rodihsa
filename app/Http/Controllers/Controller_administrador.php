@@ -34,12 +34,6 @@ class Controller_administrador extends Controller
 	}
 	
 	//vista del logeo del sitema
-	public function busquedacliente()
-	{
-		return view("cliente.Tabla_dinamica_cliente");
-	}
-	
-	//vista del logeo del sitema
 	public function busquedaproducto()
 	{
 		return view("producto.Tabla_dinamica_producto");
@@ -55,12 +49,6 @@ class Controller_administrador extends Controller
 	public function busquedaproveedor()
 	{
 		return view("proveedor.Tabla_dinamica_proveedor");
-	}
-	
-	//vista del logeo del sitema
-	public function moduloventa()
-	{
-		return view("ventas.Modulo_venta");
 	}
 	
 	public function modulofactura()

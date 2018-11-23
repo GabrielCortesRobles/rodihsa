@@ -13,7 +13,13 @@
     <script src="{{asset('js/popper.js')}}"></script>
     <script src="{{asset('js/bootstrapMaterialDesign.js')}}"></script>
     <script src="{{asset('js/Empleado.js')}}"></script>
-    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script> 
+	<script type = "text/javascript" src = "js/jquery-3.2.1.js"> </script>
+	<script type = "text/javascript" src = "js/Insertar_venta.js"></script>
+	<script type = "text/javascript" src = "js/Agrega_producto.js"></script>
+	<script type = "text/javascript" src = "js/Buscar_producto.js"></script>
+	<script type = "text/javascript" src = "js/Buscar_precio.js"></script>
+	<script type = "text/javascript" src = "js/Buscar_cliente.js"></script>
+	<script type = "text/javascript" src = "js/Buscar_empleado.js"></script>
 		<title>BA | Administrador</title>
 		<link rel="shortcut icon" href="{{asset('Images/systelecom.ico')}}">
 	</head>

@@ -22,7 +22,7 @@ Route::get('/', 'Controller_administrador@login')->name('/');
 Route::get('/administrador', 'Controller_administrador@inicio')->name('administrador');
 
 //ruta para la busqueda de clientes del perfil administrador
-Route::get('/busqueda_cliente', 'Controller_administrador@busquedacliente')->name('busqueda_cliente');
+Route::get('/busqueda_cliente', 'Controller_ventas@busqueda_cliente')->name('busqueda_cliente');
 
 //ruta para la busqueda de producto del perfil administrador
 Route::get('/busqueda_producto', 'Controller_administrador@busquedaproducto')->name('busqueda_producto');
@@ -34,7 +34,7 @@ Route::get('/busqueda_empleado', 'Controller_administrador@busquedaempleado')->n
 Route::get('/busqueda_proveedor', 'Controller_administrador@busquedaproveedor')->name('busqueda_proveedor');
 
 //ruta para el modulo de venta del perfil administrador
-Route::get('/modulo_venta', 'Controller_administrador@moduloventa')->name('modulo_venta');
+Route::get('/modulo_venta', 'Controller_ventas@moduloventa')->name('modulo_venta');
 
 Route::get('/modulofactura', 'Controller_administrador@modulofactura')->name('modulofactura');
 
