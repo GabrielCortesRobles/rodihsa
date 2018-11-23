@@ -4,7 +4,7 @@
 <fieldset class='form'>
 	<br>
 	<div align='center'>
-		<h2>Resultado de busqueda Empleado</h2>
+		<h2>Resultado de busqueda Cliente</h2>
 	</div>
 	<hr>
 	<br><br>
@@ -38,8 +38,12 @@
 							<td>{{$cl->telefono}}</td>
 							<td>
 							@if($cl->deleted_at=="")
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<a href="{{URL::action('Controller_cliente@eliminac',['id_cliente'=>$cl->id_cliente])}}">Desactivar</a> 
+							@endif
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_venta')|Session::get('sesionprivilegio_almacen')=='1')
 							/ <a href="{{URL::action('Controller_cliente@mcliente',['id_cliente'=>$cl->id_cliente])}}">Modificar</a>
+							@endif
 							@else
 							<a href="{{URL::action('Controller_cliente@restaurac',['id_cliente'=>$cl->id_cliente])}}"> Activar</a>/
 							<a href="{{URL::action('Controller_cliente@efisicac',['id_cliente'=>$cl->id_cliente])}}"> Eliminar</a>

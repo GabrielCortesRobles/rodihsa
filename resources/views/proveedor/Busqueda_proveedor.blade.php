@@ -20,7 +20,9 @@
 						  <th scope="col">DIRECCIÓN</th>
 						  <th scope="col">CORREO</th>
 						  <th scope="col">TELEFONO</th>
+						  @if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 						  <th scope="col">OPCIONES</th>
+							@endif
 						</tr>
 					</thead>
 					@foreach($proveedores as $prov)
@@ -34,8 +36,10 @@
 							<td>{{$prov->calle}} {{$prov->num_interior}} {{$prov->num_exterior}}, {{$prov->localidad}}, {{$prov->id_municipio}}</td>
 							<td>{{$prov->correo}}</td>
 							<td>{{$prov->telefono}}</td>
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<td>
 							@if($prov->deleted_at=="")
+								
 							<a href="{{URL::action('Controller_proveedor@eliminap',['id_proveedor'=>$prov->id_proveedor])}}"> Desactivar</a> 
 							/<a href="{{URL::action('Controller_proveedor@mproveedor',['id_proveedor'=>$prov->id_proveedor])}}">Modificar</a>
 							@else
@@ -43,6 +47,7 @@
 							<a href="{{URL::action('Controller_proveedor@efisicap',['id_proveedor'=>$prov->id_proveedor])}}"> Eliminar</a>
 							@endif
 							</td>
+							@endif
 						</tr>
 					@endforeach
 			</table>

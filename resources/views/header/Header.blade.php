@@ -25,21 +25,22 @@
 	</head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" style='background-color: #E67E22;'>
-		<a class="navbar-brand" href="#">Systelecom</a>
-		<img src="{{asset('Images/administrador.png')}}" height="50px" width="50px">
+		<a class="navbar-brand" href="#">{{Session::get('sesionname')}}</a>
+		<img src="{{asset('Images/')}}/{{$image=Session::get('img')}}" height="50px" width="50px">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-			@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
+			@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')|Session::get('sesionprivilegio_venta')=='1')
 				<li class="nav-item active">
 					<div class="dropdown">
 						<button class="btn btn-darck dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>Nuevo
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_producto">
 								Producto
 							</button>
@@ -49,20 +50,26 @@
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_proveedor">
 								Proveedor
 							</button>
+							@endif
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')|Session::get('sesionprivilegio_venta')=='1')
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_cliente">
 								Cliente
 							</button>
+							@endif
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_entrada">
 								Entrada
 							<button type="button" class="dropdown-item" data-toggle="modal" data-target="#alta_departamento">
 								Departamento
 							</button>
+							@endif
 						</div>
 					</div>
 				</li>
 				@endif
 	  
 				<li class="nav-item">
+				@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_venta')|Session::get('sesionprivilegio_almacen')=='1')
 					<div class="dropdown">
 						<button class="btn btn-darck dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span class="glyphicon glyphicon-align-left" aria-hidden="true">Busqueda</span>
@@ -89,14 +96,18 @@
 							</form>
 						</div>
 						</div>
-					
+					@endif
 				</li>
+				@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_venta')=='1')
 				<li class="nav-item">
+					
 					<!-- Boton que direcciona al modulo de ventas -->
 					<form class="form-inline my-2 my-lg-0" action="{{route('modulo_venta')}}">
 							<button class="btn btn-darck" type="submit">Módulo venta</button>
 					</form>
+				
 				</li>
+				@endif
 				
 				<!--<li class="nav-item">
 					

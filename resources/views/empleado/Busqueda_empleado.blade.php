@@ -22,7 +22,9 @@
 							<th scope="col">DIRECCIÓN</th>
 							<th scope="col">CORREO</th>
 							<th scope="col">TELEFONO</th>
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<th scope="col">OPCIONES</th>
+							@endif
 						</tr>
 					</thead>
 					@foreach($empleados as $emp)
@@ -37,15 +39,21 @@
 							<td>{{$emp->calle}} {{$emp->num_interior}} {{$emp->num_exterior}}, {{$emp->localidad}}, {{$emp->id_municipio}}</td>
 							<td>{{$emp->correo}}</td>
 							<td>{{$emp->telefono}}</td>
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<td>
 							@if($emp->deleted_at=="")
+							
 							<a href="{{URL::action('Controller_empleado@eliminae',['id_empleado'=>$emp->id_empleado])}}"> Desactivar</a> 
 							/ <a href="{{URL::action('Controller_empleado@mempleado',['id_empleado'=>$emp->id_empleado])}}">Modificar</a>
+							@endif
 							@else
+							@if(Session::get('sesionprivilegio_admin')|Session::get('sesionprivilegio_almacen')=='1')
 							<a href="{{URL::action('Controller_empleado@restaurae',['id_empleado'=>$emp->id_empleado])}}"> Activar</a>/
 							<a href="{{URL::action('Controller_empleado@efisicae',['id_empleado'=>$emp->id_empleado])}}"> Eliminar</a>
 							@endif
+							
 							</td>
+							@endif
 						</tr>
 					@endforeach
 				</table>
