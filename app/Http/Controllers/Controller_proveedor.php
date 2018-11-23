@@ -15,6 +15,7 @@ use App\productos;
 use App\clientes;
 use App\empleados;
 use App\entradas;
+use Session;
 
 class Controller_proveedor extends Controller
 {
@@ -68,7 +69,13 @@ class Controller_proveedor extends Controller
 	//funcio para realizar la consulta de proveedores
 	public function reporteproveedor()
 	{
-		$departamentos = departamentos::all();
+		if($sname = Session::get('sesionname')=="")
+		{
+			return redirect()->route('/');
+		}
+		else
+		{
+			$departamentos = departamentos::all();
 			$empresas = empresas::where('id_empresa','=',1)->get();
 			$id_municipio = $empresas[0]->id_municipio;
 			$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
@@ -105,50 +112,59 @@ class Controller_proveedor extends Controller
 			->with("id_municipio",$id_municipio)
 			->with("munactual",$munactual[0]->municipio)
 			->with("empresas",$empresas);
+		}
 	}
-		public function mproveedor($id_proveedor)
+
+	public function mproveedor($id_proveedor)
 	{
-		$departamentos = departamentos::all();
-		$empresas = empresas::where('id_empresa','=',1)->get();
-		$id_municipio = $empresas[0]->id_municipio;
-		$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
-		$municipios = municipios::all();
-		$id_regimenfiscal = $empresas[0]->id_regimenfiscal;
-		$regimen = regimenfiscales::where('id_regimenfiscal', '!=', $id_regimenfiscal)->get();
-		$regimenfiscales = regimenfiscales::all();
-		$proveedores = proveedores::withTrashed()
-								->orderBy('nom_proveedor','asc')
-														->get();
-		$clientes = clientes::withTrashed()
-								->orderBy('id_cliente','ASC')
-								->get();
-		$productos = productos::withTrashed()
-								->orderBy('id_producto','ASC')
-								->get();
-		$entradas = entradas::withTrashed()
-								->orderBy('id_entrada','ASC')
-								->get();
-		$empleados = empleados::withTrashed()
-								->orderBy('id_empleado','ASC')
-								->get();
-		$mproveedor = proveedores::withTrashed()
-								->where('id_proveedor','=', $id_proveedor)
-								->get();								
-		return view("proveedor.Modificacion_proveedor")
-		->with("municipios",$municipios)
-		->with("departamentos",$departamentos)
-		->with("clientes",$clientes)
-		->with("proveedores",$proveedores)
-		->with("productos",$productos)
-		->with("empleados",$empleados)
-		->with("proveedores",$proveedores)
-		->with("regimenfiscales",$regimenfiscales)
-		->with("regimen",$regimen[0]->descripcion)
-		->with("id_regimenfiscal",$id_regimenfiscal)
-		->with("id_municipio",$id_municipio)
-		->with("munactual",$munactual[0]->municipio)
-		->with("empresas",$empresas)
-		->with("mproveedor",$mproveedor[0]);
+		if($sname = Session::get('sesionname')=="")
+		{
+			return redirect()->route('/');
+		}
+		else
+		{
+			$departamentos = departamentos::all();
+			$empresas = empresas::where('id_empresa','=',1)->get();
+			$id_municipio = $empresas[0]->id_municipio;
+			$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
+			$municipios = municipios::all();
+			$id_regimenfiscal = $empresas[0]->id_regimenfiscal;
+			$regimen = regimenfiscales::where('id_regimenfiscal', '!=', $id_regimenfiscal)->get();
+			$regimenfiscales = regimenfiscales::all();
+			$proveedores = proveedores::withTrashed()
+									->orderBy('nom_proveedor','asc')
+															->get();
+			$clientes = clientes::withTrashed()
+									->orderBy('id_cliente','ASC')
+									->get();
+			$productos = productos::withTrashed()
+									->orderBy('id_producto','ASC')
+									->get();
+			$entradas = entradas::withTrashed()
+									->orderBy('id_entrada','ASC')
+									->get();
+			$empleados = empleados::withTrashed()
+									->orderBy('id_empleado','ASC')
+									->get();
+			$mproveedor = proveedores::withTrashed()
+									->where('id_proveedor','=', $id_proveedor)
+									->get();								
+			return view("proveedor.Modificacion_proveedor")
+			->with("municipios",$municipios)
+			->with("departamentos",$departamentos)
+			->with("clientes",$clientes)
+			->with("proveedores",$proveedores)
+			->with("productos",$productos)
+			->with("empleados",$empleados)
+			->with("proveedores",$proveedores)
+			->with("regimenfiscales",$regimenfiscales)
+			->with("regimen",$regimen[0]->descripcion)
+			->with("id_regimenfiscal",$id_regimenfiscal)
+			->with("id_municipio",$id_municipio)
+			->with("munactual",$munactual[0]->municipio)
+			->with("empresas",$empresas)
+			->with("mproveedor",$mproveedor[0]);
+		}
 	}
 
 	public function actualizaproveedor(Request $request)

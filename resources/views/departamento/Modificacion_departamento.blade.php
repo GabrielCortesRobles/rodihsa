@@ -1,6 +1,11 @@
 @extends('header.header') 
 @section('contenido')
-<fieldset>
+<br>
+<div id='formulario'>
+	<div class='col-md-6'>
+		<div class="card">
+		<h5 class="card-header" align='center'>Modificación Proveedor</h5>
+			<div class="card-body">
 	<!-----------------Formulario modificación departamentos----------------->
 	<form class="was-validated" action = "{{route('actualizadepartamento')}}" method='POST' enctype="multipart/form-data">
 	{{csrf_field()}}
@@ -51,5 +56,8 @@
 			</div>
 		</div>
 	</form>
-</fieldset>
+			</div>
+		</div>
+	</div>
+</div>
 @stop

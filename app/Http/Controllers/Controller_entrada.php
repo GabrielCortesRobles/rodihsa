@@ -14,6 +14,7 @@ use App\entradas;
 use App\regimenfiscales;
 use App\empresas;
 use App\departamentos;
+use Session;
 
 class Controller_entrada extends Controller
 {
@@ -28,7 +29,13 @@ class Controller_entrada extends Controller
     }
 	public function reporteentrada()
 	{
-		$departamentos = departamentos::all();
+		if($sname = Session::get('sesionname')=="")
+		{
+			return redirect()->route('/');
+		}
+		else
+		{
+			$departamentos = departamentos::all();
 			$empresas = empresas::where('id_empresa','=',1)->get();
 			$id_municipio = $empresas[0]->id_municipio;
 			$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
@@ -67,6 +74,7 @@ class Controller_entrada extends Controller
 			->with("id_municipio",$id_municipio)
 			->with("munactual",$munactual[0]->municipio)
 			->with("empresas",$empresas);
+		}
 	}
 	
 }
