@@ -19,8 +19,8 @@
 	</head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" style='background-color: #E67E22;'>
-		<a class="navbar-brand" href="#">Systelecom</a>
-		<img src="{{asset('Images/administrador.png')}}" height="50px" width="50px">
+		<a class="navbar-brand" href="#">{{Session::get('sesionname')}}</a>
+		<img src="{{asset('Images/')}}/{{$image=Session::get('img')}}" height="50px" width="50px">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>

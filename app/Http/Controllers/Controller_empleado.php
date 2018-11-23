@@ -94,7 +94,13 @@ class Controller_empleado extends Controller
 	
 	public function reporteempleado()
 	{
-		$departamentos = departamentos::all();
+		if($sname = Session::get('sesionname')=="")
+		{
+			return redirect()->route('/');
+		}
+		else
+		{
+			$departamentos = departamentos::all();
 			$empresas = empresas::where('id_empresa','=',1)->get();
 			$id_municipio = $empresas[0]->id_municipio;
 			$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
@@ -131,51 +137,59 @@ class Controller_empleado extends Controller
 			->with("id_municipio",$id_municipio)
 			->with("munactual",$munactual[0]->municipio)
 			->with("empresas",$empresas);
+		}
 	}
 
 	public function mempleado($id_empleado)
 	{
-		$departamentos = departamentos::all();
-		$empresas = empresas::where('id_empresa','=',1)->get();
-		$id_municipio = $empresas[0]->id_municipio;
-		$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
-		$municipios = municipios::all();
-		$id_regimenfiscal = $empresas[0]->id_regimenfiscal;
-		$regimen = regimenfiscales::where('id_regimenfiscal', '!=', $id_regimenfiscal)->get();
-		$regimenfiscales = regimenfiscales::all();
-		$proveedores = proveedores::withTrashed()
-								->orderBy('nom_proveedor','asc')
-														->get();
-		$clientes = clientes::withTrashed()
-								->orderBy('id_cliente','ASC')
-								->get();
-		$productos = productos::withTrashed()
-								->orderBy('id_producto','ASC')
-								->get();
-		$entradas = entradas::withTrashed()
-								->orderBy('id_entrada','ASC')
-								->get();
-		$empleados = empleados::withTrashed()
-								->orderBy('id_empleado','ASC')
-								->get();
-		$mempleado = empleados::withTrashed()
-								->where('id_empleado','=', $id_empleado)
-								->get();	
-		return view("empleado.Modificacion_empleado")
-		->with("municipios",$municipios)
-		->with("departamentos",$departamentos)
-		->with("clientes",$clientes)
-		->with("proveedores",$proveedores)
-		->with("productos",$productos)
-		->with("empleados",$empleados)
-		->with("proveedores",$proveedores)
-		->with("regimenfiscales",$regimenfiscales)
-		->with("regimen",$regimen[0]->descripcion)
-		->with("id_regimenfiscal",$id_regimenfiscal)
-		->with("id_municipio",$id_municipio)
-		->with("munactual",$munactual[0]->municipio)
-		->with("empresas",$empresas)
-		->with("mempleado",$mempleado[0]);
+		if($sname = Session::get('sesionname')=="")
+		{
+			return redirect()->route('/');
+		}
+		else
+		{
+			$departamentos = departamentos::all();
+			$empresas = empresas::where('id_empresa','=',1)->get();
+			$id_municipio = $empresas[0]->id_municipio;
+			$munactual = municipios::where('id_municipio','!=',$id_municipio)->get();
+			$municipios = municipios::all();
+			$id_regimenfiscal = $empresas[0]->id_regimenfiscal;
+			$regimen = regimenfiscales::where('id_regimenfiscal', '!=', $id_regimenfiscal)->get();
+			$regimenfiscales = regimenfiscales::all();
+			$proveedores = proveedores::withTrashed()
+									->orderBy('nom_proveedor','asc')
+															->get();
+			$clientes = clientes::withTrashed()
+									->orderBy('id_cliente','ASC')
+									->get();
+			$productos = productos::withTrashed()
+									->orderBy('id_producto','ASC')
+									->get();
+			$entradas = entradas::withTrashed()
+									->orderBy('id_entrada','ASC')
+									->get();
+			$empleados = empleados::withTrashed()
+									->orderBy('id_empleado','ASC')
+									->get();
+			$mempleado = empleados::withTrashed()
+									->where('id_empleado','=', $id_empleado)
+									->get();	
+			return view("empleado.Modificacion_empleado")
+			->with("municipios",$municipios)
+			->with("departamentos",$departamentos)
+			->with("clientes",$clientes)
+			->with("proveedores",$proveedores)
+			->with("productos",$productos)
+			->with("empleados",$empleados)
+			->with("proveedores",$proveedores)
+			->with("regimenfiscales",$regimenfiscales)
+			->with("regimen",$regimen[0]->descripcion)
+			->with("id_regimenfiscal",$id_regimenfiscal)
+			->with("id_municipio",$id_municipio)
+			->with("munactual",$munactual[0]->municipio)
+			->with("empresas",$empresas)
+			->with("mempleado",$mempleado[0]);
+		}
 	}
 
 	public function actualizaempleado(Request $request)
@@ -310,12 +324,13 @@ class Controller_empleado extends Controller
             }
             else
             {
-                Session::put('sesionname', $consulta[0]->nombre);
+                Session::put('sesionname', $consulta[0]->nom_empleado);
                 Session::put('sesionid_empleado', $consulta[0]->id_empleado);
                 Session::put('sesionprivilegio_almacen', $consulta[0]->privilegio_almacen);
                 Session::put('sesionprivilegio_venta', $consulta[0]->privilegio_venta);
                 Session::put('sesionprivilegio_caja', $consulta[0]->privilegio_caja);
                 Session::put('sesionprivilegio_admin', $consulta[0]->privilegio_admin);
+                Session::put('img', $consulta[0]->archivo);
                 //esto sirve para leer las sesiones
                 /*$sname = Session::get('sesionname');
                 $sidu = Session::get('sesionidu');
