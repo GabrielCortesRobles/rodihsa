@@ -1,4 +1,4 @@
-@extends('header.header')
+@extends('header.Header')
 @section('contenido')
 <fieldset class='form'>
 	<br>

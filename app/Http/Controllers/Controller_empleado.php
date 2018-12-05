@@ -158,7 +158,7 @@ class Controller_empleado extends Controller
 			$regimenfiscales = regimenfiscales::all();
 			$proveedores = proveedores::withTrashed()
 									->orderBy('nom_proveedor','asc')
-															->get();
+									->get();
 			$clientes = clientes::withTrashed()
 									->orderBy('id_cliente','ASC')
 									->get();
@@ -174,7 +174,15 @@ class Controller_empleado extends Controller
 			$mempleado = empleados::withTrashed()
 									->where('id_empleado','=', $id_empleado)
 									->get();	
+			$id_munemp = $mempleado[0]->id_municipio;
+			$munemp = municipios::where('id_municipio','=',$id_munemp)
+									->orderBy('municipio','ASC')
+									->get();
+			$demasmunemp = municipios::where('id_municipio', '!=', $id_munemp)
+									->orderBy('municipio','ASC')
+									->get();
 			return view("empleado.Modificacion_empleado")
+			->with("demasmunemp",$demasmunemp)
 			->with("municipios",$municipios)
 			->with("departamentos",$departamentos)
 			->with("clientes",$clientes)
@@ -188,7 +196,9 @@ class Controller_empleado extends Controller
 			->with("id_municipio",$id_municipio)
 			->with("munactual",$munactual[0]->municipio)
 			->with("empresas",$empresas)
-			->with("mempleado",$mempleado[0]);
+			->with("mempleado",$mempleado[0])
+			->with("id_munemp",$id_munemp)
+			->with("munemp",$munemp[0]->municipio);
 		}
 	}
 

@@ -1,4 +1,4 @@
- @extends('header.header') 
+ @extends('header.Header') 
  @section('contenido')
   <!-----Vista busqueda empleado-------->
 <fieldset class='form'>

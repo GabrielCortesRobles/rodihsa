@@ -1,19 +1,15 @@
-@extends('header.header') 
+@extends('header.Header') 
 @section('contenido')
 <br>
 <div id='formulario'>
 	<div class='col-md-6'>
 		<div class="card">
-		<h5 class="card-header" align='center'>Modificación Proveedor</h5>
+		<h5 class="card-header" align='center'>Modificación Empleado</h5>
 			<div class="card-body">
 	<!-----------------Formulario modificación empleado----------------->
 	<form class="was-validated" action = "{{route('actualizaempleado')}}" method='POST' enctype="multipart/form-data">
 	{{csrf_field()}}
 		<div class='formulario'>
-			<div align='center'>
-			<h2>Modificación Empleado</h2>
-			</div>
-			<hr>
 			<div class="col-md-12"  hidden>
 				<label>ID :</label>
 				<input type="text" class="form-control is-valid" id="" name='id_empleado' value='{{$mempleado->id_empleado}}'>
@@ -112,7 +108,8 @@
 				<div class="col-md-8">
 					<label>*Municipio :</label>
 					<select class="custom-select" name='id_municipio' required>
-						@foreach($municipios as $mun)
+						<option value='{{$id_munemp}}'>{{$munemp}}</option>
+						@foreach($demasmunemp as $mun)
 								<option value='{{$mun->id_municipio}}'>{{$mun->municipio}}</option>
 						@endforeach
 					</select>
